@@ -1,0 +1,245 @@
+/* ==========================================================================
+   TECHGENIO 2K26 — RESPONSIVE DESIGN (Section 32, 33)
+   ========================================================================== */
+
+/* Laptop / Medium Desktops (1024px – 1199px) */
+@media (max-width: 1199px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .pillars-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet (768px – 1023px) */
+@media (max-width: 1023px) {
+  .desktop-nav {
+    display: none;
+  }
+  
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .energy-stats-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .organizers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile Devices (320px – 767px) */
+@media (max-width: 767px) {
+  .section {
+    padding: 70px 0;
+  }
+  
+  .hero-section {
+    padding-top: 110px;
+    padding-bottom: 60px;
+  }
+  
+  .brand-wrapper {
+    gap: 8px;
+  }
+  
+  .header-logos {
+    gap: 4px;
+  }
+  
+  .logo-circle {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .brand-title {
+    font-size: 1.15rem;
+  }
+  
+  .hero-title-wrapper {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .hero-side-logo {
+    flex-direction: row;
+    gap: 16px;
+  }
+  
+  .hero-side-logo-left .hero-logo-badge,
+  .hero-side-logo-right .hero-logo-badge {
+    width: 75px;
+    height: 75px;
+    padding: 6px;
+  }
+  
+  .hero-side-logo-right {
+    flex-direction: row;
+    gap: 16px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .hero-stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .stat-val {
+    font-size: 1.25rem;
+  }
+  
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-ctas .btn {
+    width: 100%;
+  }
+  
+  .pillars-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hierarchy-branches {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Mobile Timeline */
+  .timeline-track::before {
+    left: 16px;
+  }
+  
+  .timeline-node {
+    padding-left: 44px;
+    margin-bottom: 24px;
+  }
+  
+  .timeline-bullet {
+    left: 8px;
+    top: 16px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .timeline-node.main-day .timeline-bullet {
+    left: 6px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .timeline-card {
+    padding: 18px 16px;
+  }
+  
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .energy-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .cta-box {
+    padding: 40px 20px;
+  }
+  
+  .organizers-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+/* Mobile Drawer Menu */
+.mobile-nav-drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 19, 41, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 99;
+  padding: 100px 24px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+  pointer-events: none;
+}
+
+.mobile-nav-drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(76, 157, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-link:hover {
+  color: var(--cyan);
+}
