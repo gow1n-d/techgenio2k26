@@ -1,102 +1,204 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Calendar, Star } from 'lucide-react';
+import { Calendar, Star, Sparkles, Clock, CheckCircle2, Trophy, Flame } from 'lucide-react';
 import { timelineData } from '../data/techgenioData';
 
 export default function TimelineSection() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.15 });
+  const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
   return (
-    <section id="schedule" className="relative bg-transparent py-20 md:py-28 px-6 overflow-hidden border-t border-white/10">
-      <div className="max-w-6xl mx-auto" ref={containerRef}>
+    <section id="schedule" className="relative bg-transparent py-20 md:py-32 px-4 sm:px-6 overflow-hidden border-t border-white/10">
+      {/* Background ambient glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="text-center max-w-3xl mx-auto mb-16 md:mb-24"
         >
-          <span className="text-white/40 text-xs tracking-widest uppercase mb-2 block font-mono font-semibold">
-            Program Schedule · 31 Aug to 09 Sep
-          </span>
-          <h2 className="text-4xl md:text-6xl text-white tracking-tight mb-3">
-            Event <span className="font-serif italic text-white/60">Timeline</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-mono tracking-widest uppercase mb-4 backdrop-blur-md">
+            <Clock className="w-3.5 h-3.5 text-emerald-400" />
+            <span>31 August – 09 September 2026</span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mb-4 font-normal">
+            Event <span className="font-serif italic text-white/70">Timeline</span>
           </h2>
-          <p className="text-white/60 text-sm md:text-base">
-            From preliminary screening rounds to the grand Engineers Day celebration on 09 September 2026.
+          <p className="text-white/60 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Follow the chronological path from preliminary rounds to the grand Engineers Day showcase celebration.
           </p>
         </motion.div>
 
-        {/* Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {timelineData.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.5, delay: 0.08 * idx }}
-              whileHover={{ y: -3 }}
-              className={`liquid-glass rounded-3xl p-6 sm:p-7 flex flex-col justify-between border transition-all ${
-                item.isMainDay
-                  ? 'border-amber-400/40 shadow-2xl shadow-amber-500/10 bg-white/[0.04]'
-                  : 'border-white/10 hover:border-white/20'
-              }`}
-            >
-              <div>
-                {/* Date & Day Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <span className="text-2xl font-bold text-white tracking-tight block">
-                      {item.date}
-                    </span>
-                    <span className="text-xs text-white/50 uppercase tracking-wider font-mono">
-                      {item.day}
-                    </span>
-                  </div>
+        {/* Chronological Timeline Container */}
+        <div className="relative">
+          {/* Central Connecting Spine */}
+          {/* Mobile line (left-aligned) */}
+          <div className="absolute left-6 top-6 bottom-6 w-[2px] bg-gradient-to-b from-cyan-500/40 via-emerald-500/50 via-purple-500/50 to-amber-400 md:hidden" />
+          
+          {/* Desktop line (centered) */}
+          <div className="hidden md:block absolute left-1/2 top-6 bottom-6 -translate-x-1/2 w-[2px] bg-gradient-to-b from-cyan-500/30 via-emerald-500/40 via-purple-500/40 to-amber-400/80 shadow-[0_0_15px_rgba(52,211,153,0.3)]" />
 
-                  <span
-                    className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border font-mono ${
-                      item.isMainDay
-                        ? 'bg-amber-400/20 text-amber-300 border-amber-400/40'
-                        : 'bg-white/5 text-white/70 border-white/10'
-                    }`}
-                  >
-                    {item.badge}
-                  </span>
-                </div>
+          {/* Timeline Nodes */}
+          <div className="space-y-10 md:space-y-16">
+            {timelineData.map((item, idx) => {
+              const isEven = idx % 2 === 0;
+              const isMain = item.isMainDay;
 
-                {/* Divider */}
-                <div className="w-full h-px bg-white/10 my-4" />
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  transition={{ duration: 0.55, delay: 0.08 * idx }}
+                  className={`relative flex items-start md:items-center ${
+                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  {/* Left / Right Content Card (Desktop) */}
+                  <div className="w-full pl-16 md:pl-0 md:w-[calc(50%-2.5rem)]">
+                    <div
+                      className={`liquid-glass rounded-2xl md:rounded-3xl p-6 sm:p-7 border transition-all duration-300 relative group overflow-hidden ${
+                        isMain
+                          ? 'border-amber-400/50 bg-gradient-to-br from-amber-950/20 via-neutral-900/80 to-amber-900/10 shadow-[0_0_30px_rgba(251,191,36,0.12)] hover:border-amber-400/80'
+                          : 'border-white/10 hover:border-white/25 hover:bg-white/[0.04]'
+                      }`}
+                    >
+                      {/* Subtle corner badge / indicator */}
+                      <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+                        <div className="flex items-center gap-2.5">
+                          <span
+                            className={`text-xl sm:text-2xl font-bold tracking-tight ${
+                              isMain ? 'text-amber-300' : 'text-white'
+                            }`}
+                          >
+                            {item.date}
+                          </span>
+                          <span className="text-xs text-white/50 uppercase tracking-widest font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10">
+                            {item.day}
+                          </span>
+                        </div>
 
-                {/* Events list */}
-                <div className="space-y-4">
-                  {item.events.map((ev, evIdx) => (
-                    <div key={evIdx} className="space-y-1">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <h4 className="text-white font-medium text-sm sm:text-base">
-                          {ev.name}
-                        </h4>
-                        <span className="text-[11px] font-mono text-emerald-400/90 whitespace-nowrap">
-                          {ev.stage}
+                        <span
+                          className={`text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full border flex items-center gap-1.5 ${
+                            isMain
+                              ? 'bg-amber-400/20 text-amber-300 border-amber-400/40 shadow-sm shadow-amber-400/20'
+                              : 'bg-white/5 text-white/70 border-white/10'
+                          }`}
+                        >
+                          {isMain && <Star className="w-3 h-3 fill-amber-300 text-amber-300 animate-pulse" />}
+                          {item.badge}
                         </span>
                       </div>
-                      <p className="text-xs text-white/50 leading-relaxed">
-                        {ev.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
-              {item.isMainDay && (
-                <div className="mt-6 pt-4 border-t border-amber-400/20 flex items-center gap-2 text-xs text-amber-300/90 font-mono">
-                  <Star className="w-3.5 h-3.5 fill-amber-300/30 text-amber-300" />
-                  <span>Grand Celebration & Awards Assembly</span>
-                </div>
-              )}
-            </motion.div>
-          ))}
+                      {/* Horizontal divider */}
+                      <div
+                        className={`w-full h-px mb-4 ${
+                          isMain ? 'bg-gradient-to-r from-amber-400/30 via-amber-400/10 to-transparent' : 'bg-white/10'
+                        }`}
+                      />
+
+                      {/* Events for this milestone */}
+                      <div className="space-y-4">
+                        {item.events.map((ev, evIdx) => (
+                          <div
+                            key={evIdx}
+                            className={`p-3.5 rounded-xl transition-colors ${
+                              isMain
+                                ? 'bg-amber-400/[0.04] border border-amber-400/10 hover:border-amber-400/30'
+                                : 'bg-white/[0.02] border border-white/5 hover:border-white/15'
+                            }`}
+                          >
+                            <div className="flex items-start justify-between gap-2 mb-1.5">
+                              <h4
+                                className={`font-semibold text-sm sm:text-base tracking-tight ${
+                                  isMain ? 'text-amber-200' : 'text-white'
+                                }`}
+                              >
+                                {ev.name}
+                              </h4>
+                              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-700/50 text-emerald-300/90 whitespace-nowrap">
+                                {ev.stage}
+                              </span>
+                            </div>
+                            <p className="text-xs text-white/55 leading-relaxed">
+                              {ev.desc}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Special Highlight for Main Celebration Day */}
+                      {isMain && (
+                        <div className="mt-5 pt-3.5 border-t border-amber-400/20 flex items-center justify-between text-xs text-amber-300/90 font-mono flex-wrap gap-2">
+                          <div className="flex items-center gap-2">
+                            <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
+                            <span>Grand Engineers Day Finale & Awards Assembly</span>
+                          </div>
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-amber-400/20 text-amber-200 uppercase tracking-widest font-bold">
+                            Apex Event
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Central Node / Marker */}
+                  {/* Mobile Node Position */}
+                  <div className="absolute left-6 -translate-x-1/2 top-7 md:hidden flex items-center justify-center">
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center border-2 transition-all ${
+                        isMain
+                          ? 'bg-amber-500 border-amber-300 text-black shadow-[0_0_15px_rgba(251,191,36,0.6)]'
+                          : 'bg-neutral-900 border-emerald-400 text-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.3)]'
+                      }`}
+                    >
+                      {isMain ? (
+                        <Star className="w-3.5 h-3.5 fill-black text-black" />
+                      ) : (
+                        <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Desktop Node Position (Center Spine) */}
+                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center z-20">
+                    <div
+                      className={`w-11 h-11 rounded-full flex items-center justify-center border-2 backdrop-blur-md transition-transform duration-300 hover:scale-110 shadow-lg ${
+                        isMain
+                          ? 'bg-gradient-to-br from-amber-400 to-amber-600 border-amber-200 text-neutral-950 shadow-[0_0_25px_rgba(251,191,36,0.7)]'
+                          : 'bg-neutral-900/95 border-emerald-400/80 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.3)]'
+                      }`}
+                    >
+                      {isMain ? (
+                        <Star className="w-5 h-5 fill-neutral-950 text-neutral-950 animate-pulse" />
+                      ) : (
+                        <span className="text-xs font-mono font-bold">
+                          {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Horizontal Connector Line towards the active card */}
+                    <div
+                      className={`absolute top-1/2 -translate-y-1/2 h-[2px] w-6 ${
+                        isEven
+                          ? 'right-full bg-gradient-to-l from-emerald-400/60 to-transparent'
+                          : 'left-full bg-gradient-to-r from-emerald-400/60 to-transparent'
+                      } ${isMain ? '!from-amber-400 !to-transparent' : ''}`}
+                    />
+                  </div>
+
+                  {/* Desktop spacer for the other half */}
+                  <div className="hidden md:block md:w-[calc(50%-2.5rem)]" />
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

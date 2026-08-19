@@ -33,7 +33,7 @@ export const CONFIG = {
     { role: "CHIEF PATRON", name: "Dr. K. N. K. Ganesh", designation: "Secretary" },
     { role: "CHIEF PATRON", name: "Er. K. N. K. Karthik", designation: "President" },
     { role: "PATRON", name: "Dr. A. V. Ram Prasad", designation: "Principal" },
-    { role: "EVENT COORDINATOR", name: "Mr. R. Thangankaran", designation: "IRP Coordinator" },
+    { role: "EVENT COORDINATOR", name: "Mr. R. Thangasankaran", designation: "IRP Coordinator" },
     { role: "ORGANIZING COMMITTEE", name: "IRP Aspirants", designation: "Student Organizers" }
   ]
 };

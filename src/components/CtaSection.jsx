@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Sparkles, Trophy, Users, ShieldCheck } from 'lucide-react';
-import { CONFIG } from '../data/techgenioData';
+import { Sparkles, Trophy, Users, ShieldCheck } from 'lucide-react';
 
-export default function CtaSection({ onOpenRegister }) {
+export default function CtaSection() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.2 });
 
@@ -48,33 +47,6 @@ export default function CtaSection({ onOpenRegister }) {
           >
             Join student engineers, innovators, and thinkers at <strong>K.L.N. College of Engineering</strong>. Compete for cash prizes, merit trophies, and institutional honors.
           </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onOpenRegister}
-              className="w-full sm:w-auto bg-white text-black font-semibold rounded-full px-8 py-3.5 text-sm sm:text-base flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all shadow-xl cursor-pointer"
-            >
-              <span>Register for TechGenio</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-            </motion.button>
-
-            <a
-              href={CONFIG.REGISTRATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto liquid-glass rounded-full px-8 py-3.5 text-white font-medium text-sm sm:text-base hover:bg-white/10 transition-colors border border-white/20 cursor-pointer"
-            >
-              Direct Google Form
-            </a>
-          </motion.div>
 
           {/* Trust badges */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-white/10 text-xs font-mono text-white/60">

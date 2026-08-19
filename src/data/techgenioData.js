@@ -143,11 +143,24 @@ export const timelineData = [
   }
 ];
 
-export const organizersList = [
+export const institutionalPatrons = [
   { role: "CONVENER", name: "Dr. S. Parthasarthy", designation: "QC-IR Head", tag: "QC-IR" },
   { role: "CHIEF PATRON", name: "Dr. K. N. K. Ganesh", designation: "Secretary", tag: "Management" },
   { role: "CHIEF PATRON", name: "Er. K. N. K. Karthik", designation: "President", tag: "Management" },
   { role: "PATRON", name: "Dr. A. V. Ram Prasad", designation: "Principal", tag: "Institution" },
-  { role: "EVENT COORDINATOR", name: "Mr. R. Thangankaran", designation: "IRP Coordinator", tag: "IRP" },
-  { role: "ORGANIZING COMMITTEE", name: "IRP Aspirants", designation: "Student Organizers", tag: "Student Body" }
+  { role: "EVENT COORDINATOR", name: "Mr. R. Thangasankaran", designation: "IRP Coordinator", tag: "IRP" }
 ];
+
+export const studentCommittee = [
+  { role: "PRESIDENT", name: "Aravindh N K", designation: "Student Executive President", tag: "Student Committee" },
+  { role: "VICE PRESIDENT", name: "Gowind B M", designation: "Student Executive Vice President", tag: "Student Committee" },
+  { role: "SECRETARY", name: "Vipinayan P R K", designation: "Student Executive Secretary", tag: "Student Committee" },
+  { role: "TREASURER", name: "Nehasri M S & Sindhamani V", designation: "Student Executive Treasurers", tag: "Student Committee" },
+  { role: "ORGANIZING COMMITTEE", name: "IRP Aspirants", designation: "Event Organizing Team", tag: "Organizing Body" }
+];
+
+export const organizersList = [
+  ...institutionalPatrons,
+  ...studentCommittee
+];
+

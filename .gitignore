@@ -34,8 +34,10 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-# Temporary scripts
+# Temporary scripts & Root media
+/*.mp4
 autocrop_logos.py
 crop_iic_circle.py
 refine_bg.py
 clean_iic.py
+remove_bg.py

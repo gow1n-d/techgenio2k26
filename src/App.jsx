@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { ArrowRight, Globe, Instagram, Twitter, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import Navbar from './components/Navbar';
 import BackgroundVideo from './components/BackgroundVideo';
 import AboutSection from './components/AboutSection';
-import FeaturedVideoSection from './components/FeaturedVideoSection';
 import PhilosophySection from './components/PhilosophySection';
 import ServicesSection from './components/ServicesSection';
 import TimelineSection from './components/TimelineSection';
@@ -12,7 +11,6 @@ import OrganizersSection from './components/OrganizersSection';
 import CtaSection from './components/CtaSection';
 import RegistrationModal from './components/RegistrationModal';
 import Footer from './components/Footer';
-import { CONFIG } from './data/techgenioData';
 
 const TECHGENIO_PILLS = [
   { id: "techxpo", label: "TECHXPO (Hardware)" },
@@ -23,7 +21,6 @@ const TECHGENIO_PILLS = [
 ];
 
 export default function App() {
-  const [emailInput, setEmailInput] = useState('');
   const [selectedPills, setSelectedPills] = useState(["techxpo", "code-forge"]);
   const [modalOpen, setModalOpen] = useState(false);
   const [preselectedArena, setPreselectedArena] = useState(null);
@@ -40,11 +37,6 @@ export default function App() {
     setSelectedPills((prev) =>
       prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
     );
-  };
-
-  const handleHeroSubmit = (e) => {
-    e.preventDefault();
-    setModalOpen(true);
   };
 
   const openRegisterWithArena = (arenaId) => {
@@ -66,12 +58,12 @@ export default function App() {
       {/* Main Content Wrapper (Z-10 so it sits atop the animated background) */}
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* SECTION 1 -- HERO (full-viewport) */}
-        <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
+        <section className="relative min-h-screen flex flex-col justify-between overflow-hidden pb-12">
           {/* Navbar */}
           <Navbar onOpenRegister={() => setModalOpen(true)} />
 
           {/* Hero Content */}
-          <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-6 text-center max-w-5xl mx-auto -translate-y-[1%] md:-translate-y-[2%]">
+          <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12 text-center max-w-5xl mx-auto">
             {/* BIG, PROMINENT INSTITUTIONAL LOGOS SHOWCASE */}
             <motion.div
               initial={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -130,7 +122,7 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-white/85 text-sm md:text-base leading-relaxed px-4 max-w-2xl mb-7 font-normal"
+              className="text-white/85 text-sm md:text-base leading-relaxed px-4 max-w-2xl mb-8 font-normal"
             >
               Organized by <strong>IIC × IRP under QC-IR</strong>. Celebrate National Engineer's Day with 5 premier technical arenas: Hardware Expo, Neural Quiz, Software Hackathon, Precision Debugging & Startup Pitching.
             </motion.p>
@@ -140,7 +132,7 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="flex flex-wrap justify-center gap-2 mb-7 max-w-2xl"
+              className="flex flex-wrap justify-center gap-2 max-w-2xl"
             >
               {TECHGENIO_PILLS.map((pill) => {
                 const isSelected = selectedPills.includes(pill.id);
@@ -161,112 +153,25 @@ export default function App() {
                 );
               })}
             </motion.div>
-
-            {/* Email Input & Submit Bar */}
-            <motion.form
-              onSubmit={handleHeroSubmit}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="max-w-xl w-full liquid-glass rounded-full pl-6 pr-2 py-2 flex items-center gap-3 mb-6 shadow-2xl border border-white/20"
-            >
-              <input
-                type="email"
-                value={emailInput}
-                onChange={(e) => setEmailInput(e.target.value)}
-                placeholder="Enter your college email to register"
-                className="bg-transparent border-none outline-none text-white placeholder:text-white/40 text-sm md:text-base flex-1 w-full focus:ring-0"
-              />
-              <button
-                type="submit"
-                className="bg-white rounded-full p-3 text-black hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-md"
-                aria-label="Submit Email"
-              >
-                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
-              </button>
-            </motion.form>
-
-            {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
-              className="flex items-center gap-4"
-            >
-              <button
-                onClick={() => {
-                  const el = document.getElementById('arenas');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors cursor-pointer border border-white/20"
-              >
-                Explore 5 Arenas
-              </button>
-              <button
-                onClick={() => setModalOpen(true)}
-                className="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors cursor-pointer hidden sm:inline-block border border-white/20"
-              >
-                Quick Register
-              </button>
-            </motion.div>
-          </div>
-
-          {/* Social Icons */}
-          <div className="relative z-10 flex justify-center gap-4 pb-10">
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-glass rounded-full p-3.5 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110 border border-white/15"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-4 h-4" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-glass rounded-full p-3.5 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110 border border-white/15"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-4 h-4" />
-            </a>
-            <a
-              href="https://klnce.edu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-glass rounded-full p-3.5 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110 border border-white/15"
-              aria-label="College Portal"
-            >
-              <Globe className="w-4 h-4" />
-            </a>
           </div>
         </section>
 
         {/* SECTION 2 -- ABOUT SECTION */}
         <AboutSection />
 
-        {/* SECTION 3 -- FEATURED VIDEO */}
-        <FeaturedVideoSection
-          onExploreMore={() => {
-            const el = document.getElementById('arenas');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* SECTION 4 -- PHILOSOPHY / INNOVATION x VISION */}
+        {/* SECTION 3 -- PHILOSOPHY / INNOVATION x VISION */}
         <PhilosophySection />
 
-        {/* SECTION 5 -- SERVICES / WHAT WE DO (THE 5 ARENAS) */}
+        {/* SECTION 4 -- SERVICES / WHAT WE DO (THE 5 ARENAS) */}
         <ServicesSection onRegisterArena={openRegisterWithArena} />
 
-        {/* TIMELINE & SCHEDULE SECTION */}
+        {/* SECTION 5 -- TIMELINE & SCHEDULE */}
         <TimelineSection />
 
-        {/* PATRONS & ORGANIZERS */}
+        {/* SECTION 6 -- PATRONS & ORGANIZERS */}
         <OrganizersSection />
 
-        {/* CALL TO ACTION SECTION */}
+        {/* SECTION 7 -- CALL TO ACTION */}
         <CtaSection onOpenRegister={() => setModalOpen(true)} />
 
         {/* REGISTRATION MODAL */}
@@ -277,7 +182,6 @@ export default function App() {
             setPreselectedArena(null);
           }}
           preselectedArena={preselectedArena}
-          initialEmail={emailInput}
         />
 
         {/* FOOTER */}
