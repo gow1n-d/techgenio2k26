@@ -1,93 +1,100 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Calendar, Star } from 'lucide-react';
 import { timelineData } from '../data/techgenioData';
-import { Calendar } from 'lucide-react';
 
 export default function TimelineSection() {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.15 });
+
   return (
-    <section id="timeline" className="py-24 bg-[#0A0F0A] border-t border-neutral-800 relative z-20">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/60 text-blue-300 font-mono text-xs font-semibold tracking-wider uppercase mb-4 border border-blue-800/50">
-            Chronological Roadmap
+    <section id="schedule" className="relative bg-transparent py-20 md:py-28 px-6 overflow-hidden border-t border-white/10">
+      <div className="max-w-6xl mx-auto" ref={containerRef}>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-14"
+        >
+          <span className="text-white/40 text-xs tracking-widest uppercase mb-2 block font-mono font-semibold">
+            Program Schedule · 31 Aug to 09 Sep
           </span>
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-4">
-            Event Timeline
+          <h2 className="text-4xl md:text-6xl text-white tracking-tight mb-3">
+            Event <span className="font-serif italic text-white/60">Timeline</span>
           </h2>
-          <p className="text-lg text-neutral-400">
-            From the opening preliminary rounds on 31 August 2026 to the grand celebration on 09 September 2026 Main Day.
+          <p className="text-white/60 text-sm md:text-base">
+            From preliminary screening rounds to the grand Engineers Day celebration on 09 September 2026.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Vertical Timeline Track */}
-        <div className="relative border-l-2 border-neutral-700 ml-4 md:ml-8 space-y-12 pb-6">
-          {timelineData.map((slot, index) => (
+        {/* Timeline Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {timelineData.map((item, idx) => (
             <motion.div
-              key={slot.date}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="relative pl-8 md:pl-10"
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.5, delay: 0.08 * idx }}
+              whileHover={{ y: -3 }}
+              className={`liquid-glass rounded-3xl p-6 sm:p-7 flex flex-col justify-between border transition-all ${
+                item.isMainDay
+                  ? 'border-amber-400/40 shadow-2xl shadow-amber-500/10 bg-white/[0.04]'
+                  : 'border-white/10 hover:border-white/20'
+              }`}
             >
-              {/* Bullet Node */}
-              <div
-                className={`absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 transition-all ${
-                  slot.isMainDay
-                    ? 'w-6 h-6 -left-[13px] border-amber-500 bg-amber-500 shadow-md shadow-amber-500/50 ring-4 ring-amber-900/40'
-                    : 'border-emerald-500 bg-emerald-500/30'
-                }`}
-              />
-
-              {/* Date Card */}
-              <div
-                className={`p-6 sm:p-8 rounded-3xl border transition-all ${
-                  slot.isMainDay
-                    ? 'bg-gradient-to-br from-amber-950/40 via-[#141A14] to-amber-950/20 border-amber-700/60 shadow-lg shadow-amber-900/20'
-                    : 'bg-[#141A14] border-neutral-700/60 shadow-md'
-                }`}
-              >
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-2.5">
-                    <Calendar className="w-4 h-4 text-neutral-500" />
-                    <span className="font-mono font-bold text-base sm:text-lg text-white">
-                      {slot.date}
+              <div>
+                {/* Date & Day Header */}
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <span className="text-2xl font-bold text-white tracking-tight block">
+                      {item.date}
                     </span>
-                    <span className="text-xs font-medium text-neutral-500">
-                      ({slot.day})
+                    <span className="text-xs text-white/50 uppercase tracking-wider font-mono">
+                      {item.day}
                     </span>
                   </div>
 
-                  <span className={`text-xs font-mono font-bold px-3 py-1 rounded-full border ${
-                    slot.isMainDay
-                      ? 'bg-amber-500 text-black border-amber-400 font-bold'
-                      : 'bg-neutral-800 text-neutral-300 border-neutral-700'
-                  }`}>
-                    {slot.badge}
+                  <span
+                    className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border font-mono ${
+                      item.isMainDay
+                        ? 'bg-amber-400/20 text-amber-300 border-amber-400/40'
+                        : 'bg-white/5 text-white/70 border-white/10'
+                    }`}
+                  >
+                    {item.badge}
                   </span>
                 </div>
 
+                {/* Divider */}
+                <div className="w-full h-px bg-white/10 my-4" />
+
+                {/* Events list */}
                 <div className="space-y-4">
-                  {slot.events.map((ev, i) => (
-                    <div
-                      key={i}
-                      className="p-4 rounded-2xl bg-neutral-800/50 border border-neutral-700/50"
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                        <span className="font-bold text-white text-base">
+                  {item.events.map((ev, evIdx) => (
+                    <div key={evIdx} className="space-y-1">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <h4 className="text-white font-medium text-sm sm:text-base">
                           {ev.name}
-                        </span>
-                        <span className="text-xs font-mono font-semibold text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded-md border border-emerald-800/50">
+                        </h4>
+                        <span className="text-[11px] font-mono text-emerald-400/90 whitespace-nowrap">
                           {ev.stage}
                         </span>
                       </div>
-                      <p className="text-sm text-neutral-400 leading-relaxed">
+                      <p className="text-xs text-white/50 leading-relaxed">
                         {ev.desc}
                       </p>
                     </div>
                   ))}
                 </div>
               </div>
+
+              {item.isMainDay && (
+                <div className="mt-6 pt-4 border-t border-amber-400/20 flex items-center gap-2 text-xs text-amber-300/90 font-mono">
+                  <Star className="w-3.5 h-3.5 fill-amber-300/30 text-amber-300" />
+                  <span>Grand Celebration & Awards Assembly</span>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

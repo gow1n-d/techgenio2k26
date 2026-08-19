@@ -1,116 +1,111 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ShieldCheck, Lightbulb, Cpu, Trophy, Sparkles } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Award, Zap, Compass, Cpu, ArrowUpRight } from 'lucide-react';
+import { CONFIG } from '../data/techgenioData';
 
 export default function AboutSection() {
-  const pillars = [
-    { name: "ENGINEERING", icon: <Cpu className="w-5 h-5" /> },
-    { name: "INNOVATION", icon: <Lightbulb className="w-5 h-5" /> },
-    { name: "TECHNOLOGY", icon: <Sparkles className="w-5 h-5" /> },
-    { name: "COMPETITION", icon: <Trophy className="w-5 h-5" /> },
-    { name: "CREATIVITY", icon: <ShieldCheck className="w-5 h-5" /> }
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+
+  const highlights = [
+    {
+      icon: Cpu,
+      title: "05 Flagship Arenas",
+      desc: "Hardware Expo, Neural Quiz, Software Hackathon, Debugging & Idea Pitching.",
+      accent: "text-amber-400"
+    },
+    {
+      icon: Zap,
+      title: "10-Day Tech Festival",
+      desc: "Sprint phases starting 31 August leading to the Grand Engineers Day Finale on 09 Sept.",
+      accent: "text-cyan-400"
+    },
+    {
+      icon: Compass,
+      title: "IIC × IRP under QC-IR",
+      desc: "Architected by Institution's Innovation Council & Innovation Research Park at KLNCE.",
+      accent: "text-emerald-400"
+    },
+    {
+      icon: Award,
+      title: "Prizes & Recognition",
+      desc: "Prestigious cash awards, merit trophies, and institutional certificates for champions.",
+      accent: "text-purple-400"
+    }
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#0A0F0A] border-t border-neutral-800 relative z-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl mb-16">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/50 text-emerald-300 font-mono text-xs font-semibold tracking-wider uppercase mb-4 border border-emerald-700/50">
-            Institutional Legacy
-          </span>
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">
-            About TechGenio 2K26
-          </h2>
-          <p className="text-lg md:text-xl text-neutral-400 leading-relaxed font-normal">
-            Conducted at <strong className="text-neutral-200">K.L.N. College of Engineering</strong> in celebration of <strong className="text-neutral-200">Engineer's Day</strong>, TechGenio 2K26 brings together budding engineers in competitive arenas designed to cultivate technical excellence, problem-solving, and multidisciplinary invention.
-          </p>
-        </div>
+    <section
+      id="about"
+      ref={containerRef}
+      className="relative bg-transparent pt-24 md:pt-36 pb-16 md:pb-24 px-6 overflow-hidden"
+    >
+      {/* Subtle radial ambient lighting to prevent empty black gaps */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.06)_0%,_transparent_70%)] pointer-events-none" />
 
-        {/* Organizational Architecture Hierarchy */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="bg-[#141A14] p-8 rounded-3xl border border-neutral-700/60 shadow-lg flex flex-col justify-between hover:border-emerald-700/50 transition-colors"
-          >
-            <div>
-              <div className="w-14 h-14 rounded-2xl bg-amber-950/50 border border-amber-700/40 p-2 flex items-center justify-center mb-6">
-                <img src="/iic.png" alt="IIC Logo" className="w-full h-full object-contain" />
-              </div>
-              <span className="text-xs font-mono font-bold tracking-wider text-amber-400 uppercase block mb-1">
-                Council Body
-              </span>
-              <h3 className="text-2xl font-semibold text-white mb-3">
-                Institution's Innovation Council
-              </h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">
-                Fosters an innovation ecosystem on campus, mentoring student prototypes, ideation challenges, and intellectual property.
-              </p>
-            </div>
-            <span className="text-xs font-mono text-neutral-600 mt-6 pt-4 border-t border-neutral-700/50">
-              EST. 2018 · IIC KLNCE
-            </span>
-          </motion.div>
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Label */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full liquid-glass text-white/60 text-xs tracking-widest uppercase mb-6 font-mono border border-white/10"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          About TechGenio 2K26 · KLNCE
+        </motion.div>
 
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="bg-[#141A14] p-8 rounded-3xl border border-neutral-700/60 shadow-lg flex flex-col justify-between hover:border-emerald-700/50 transition-colors"
-          >
-            <div>
-              <div className="w-14 h-14 rounded-2xl bg-blue-950/50 border border-blue-700/40 p-2 flex items-center justify-center mb-6">
-                <img src="/irp.png" alt="IRP Logo" className="w-full h-full object-contain" />
-              </div>
-              <span className="text-xs font-mono font-bold tracking-wider text-blue-400 uppercase block mb-1">
-                Research Facility
-              </span>
-              <h3 className="text-2xl font-semibold text-white mb-3">
-                Innovation Research Park
-              </h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">
-                Hands-on development laboratories and high-performance computing centers providing incubation for deep-tech student hardware & software.
-              </p>
-            </div>
-            <span className="text-xs font-mono text-neutral-600 mt-6 pt-4 border-t border-neutral-700/50">
-              IRP KLNCE
-            </span>
-          </motion.div>
+        {/* Heading without 'then' */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-4xl md:text-6xl lg:text-7xl text-white leading-[1.15] tracking-tight mb-12"
+        >
+          Pioneering{' '}
+          <span className="font-serif italic text-white/70">engineering ideas</span> for{' '}
+          <br className="hidden md:inline" />
+          minds that{' '}
+          <span className="font-serif italic text-white/70">create, build, and inspire.</span>
+        </motion.h2>
 
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="bg-[#141A14] p-8 rounded-3xl border border-neutral-700/60 shadow-lg flex flex-col justify-between hover:border-emerald-700/50 transition-colors"
-          >
-            <div>
-              <div className="w-14 h-14 rounded-2xl bg-emerald-950/50 border border-emerald-700/40 p-2 flex items-center justify-center mb-6">
-                <img src="/klnce.png" alt="KLNCE Crest" className="w-full h-full object-contain" />
-              </div>
-              <span className="text-xs font-mono font-bold tracking-wider text-emerald-400 uppercase block mb-1">
-                Apex Committee
-              </span>
-              <h3 className="text-2xl font-semibold text-white mb-3">
-                Quality Circle - Industrial Relations
-              </h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">
-                Coordinates industry partnerships, judging juries, sponsorships, and technical benchmarking under the leadership of Convener Dr. S. Parthasarthy.
-              </p>
-            </div>
-            <span className="text-xs font-mono text-neutral-600 mt-6 pt-4 border-t border-neutral-700/50">
-              QC-IR APEX BODY
-            </span>
-          </motion.div>
-        </div>
+        {/* Description intro */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-white/70 text-base md:text-lg max-w-3xl leading-relaxed mb-16"
+        >
+          Hosted at <strong>K.L.N. College of Engineering (Autonomous)</strong> to celebrate National Engineer's Day, TechGenio 2K26 is the ultimate proving ground for creative engineering, algorithmic mastery, and hardware invention.
+        </motion.p>
 
-        {/* 5 Core Pillars Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-          {pillars.map((pillar) => (
-            <div
-              key={pillar.name}
-              className="bg-[#141A14] p-5 rounded-2xl border border-neutral-700/50 text-center flex flex-col items-center justify-center gap-2 shadow-md hover:border-emerald-600/50 transition-colors"
-            >
-              <div className="text-emerald-400">{pillar.icon}</div>
-              <span className="text-xs font-mono font-bold tracking-wider text-neutral-300">
-                {pillar.name}
-              </span>
-            </div>
-          ))}
+        {/* Highlights Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {highlights.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 25 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
+                transition={{ duration: 0.5, delay: 0.15 * idx }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="liquid-glass rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mb-5 border border-white/10 group-hover:border-white/25 transition-colors">
+                    <Icon className={`w-5 h-5 ${item.accent} transition-transform group-hover:scale-110`} />
+                  </div>
+                  <h3 className="text-white font-semibold text-lg mb-2 tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-white/50 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

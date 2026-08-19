@@ -1,84 +1,98 @@
 import React from 'react';
+import { Globe, ArrowUp, Mail, MapPin } from 'lucide-react';
 import { CONFIG } from '../data/techgenioData';
-import { ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-neutral-900 text-white pt-20 pb-12 border-t border-neutral-800 relative z-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-          {/* Brand Info */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex items-center gap-1.5 bg-neutral-800 p-1.5 rounded-full border border-neutral-700">
-                <img src="/klnce.png" alt="KLNCE" className="w-6 h-6 object-contain rounded-full" />
-                <img src="/iic.png" alt="IIC" className="w-5 h-5 object-contain rounded-full" />
-                <img src="/irp.png" alt="IRP" className="w-5 h-5 object-contain rounded-full" />
-              </div>
-              <span className="text-xl font-bold tracking-tight">
-                TECHGENIO&reg; 2K26
-              </span>
+    <footer className="relative bg-black border-t border-white/10 pt-20 pb-12 px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        {/* Top Tier */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-white/10">
+          {/* Col 1: TechGenio & Big Visible Logos */}
+          <div className="md:col-span-2 space-y-6">
+            {/* Big High-Contrast Logos Showcase */}
+            <div className="flex items-center gap-4 bg-white p-3.5 px-6 rounded-2xl w-fit shadow-xl">
+              <img
+                src="/klnce.png"
+                alt="KLNCE Official Shield"
+                className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+                title="K.L.N. College of Engineering (Autonomous)"
+              />
+              <div className="h-9 w-[1.5px] bg-neutral-300" />
+              <img
+                src="/iic.png"
+                alt="IIC Logo"
+                className="w-11 h-11 sm:w-12 sm:h-12 object-contain"
+                title="Institution's Innovation Council"
+              />
+              <div className="h-9 w-[1.5px] bg-neutral-300" />
+              <img
+                src="/irp.png"
+                alt="IRP Logo"
+                className="w-11 h-11 sm:w-12 sm:h-12 object-contain"
+                title="Innovation Research Park"
+              />
             </div>
-            <p className="text-xs font-mono text-emerald-400 font-semibold uppercase mb-3">
-              ENGINEER'S DAY CELEBRATION · 09 SEP 2026
-            </p>
-            <p className="text-sm text-neutral-400 leading-relaxed mb-6">
-              K.L.N. College of Engineering (Autonomous)<br />
-              Organized by IIC × IRP under QC-IR
-            </p>
-            <a
-              href={CONFIG.REGISTRATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-bold bg-white text-neutral-900 px-6 py-2.5 rounded-full shadow-xs hover:bg-neutral-100 transition-colors"
-            >
-              <span>Register Now</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+
+            <div className="space-y-2">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                TechGenio <span className="font-serif italic text-white/70">2K26</span>
+              </h3>
+              <p className="text-white/60 text-sm max-w-md leading-relaxed">
+                National Engineer's Day celebration hosted by <strong>K.L.N. College of Engineering (Autonomous)</strong>. Organized by Institution's Innovation Council (IIC) & Innovation Research Park (IRP) under QC-IR.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs text-white/50 font-mono pt-1">
+              <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>Pottapalayam, Madurai - 630612, Tamil Nadu</span>
+            </div>
           </div>
 
-          {/* Navigation Links */}
+          {/* Col 2: Quick Links */}
           <div>
-            <h4 className="font-mono text-xs font-bold text-neutral-400 uppercase tracking-wider mb-5">
-              Quick Links
+            <h4 className="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4 font-mono">
+              Navigation
             </h4>
-            <ul className="space-y-3 text-sm text-neutral-300">
-              <li><a href="#about" className="hover:text-white transition-colors">About TechGenio</a></li>
-              <li><a href="#events" className="hover:text-white transition-colors">05 Flagship Arenas</a></li>
-              <li><a href="#timeline" className="hover:text-white transition-colors">Event Timeline (31 Aug – 09 Sep)</a></li>
-              <li><a href="#schedule" className="hover:text-white transition-colors">Schedule Matrix</a></li>
-              <li><a href="#organizers" className="hover:text-white transition-colors">Officials & Committee</a></li>
+            <ul className="space-y-2.5 text-sm">
+              <li><a href="#about" className="text-white/70 hover:text-white transition-colors">About TechGenio</a></li>
+              <li><a href="#arenas" className="text-white/70 hover:text-white transition-colors">5 Flagship Arenas</a></li>
+              <li><a href="#schedule" className="text-white/70 hover:text-white transition-colors">Schedule & Timeline</a></li>
+              <li><a href="#philosophy" className="text-white/70 hover:text-white transition-colors">Innovation Philosophy</a></li>
+              <li><a href="#organizers" className="text-white/70 hover:text-white transition-colors">Patrons & Organizers</a></li>
             </ul>
           </div>
 
-          {/* Governance */}
+          {/* Col 3: Arenas */}
           <div>
-            <h4 className="font-mono text-xs font-bold text-neutral-400 uppercase tracking-wider mb-5">
-              Governance & Organizing Bodies
+            <h4 className="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4 font-mono">
+              The 5 Arenas
             </h4>
-            <ul className="space-y-3 text-sm text-neutral-300">
-              <li>Institution's Innovation Council (IIC)</li>
-              <li>Innovation Research Park (IRP)</li>
-              <li>Quality Circle - Industrial Relations (QC-IR)</li>
-              <li>K.L.N. College of Engineering Management</li>
-              <li>
-                <a
-                  href={CONFIG.REGISTRATION_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 font-semibold hover:underline inline-flex items-center gap-1"
-                >
-                  <span>Delegate Registration Form</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-              </li>
+            <ul className="space-y-2.5 text-sm text-white/70">
+              <li>TECHXPO (Hardware Expo)</li>
+              <li>NEURO PULSE (Technical Quiz)</li>
+              <li>CODE FORGE (Hackathon)</li>
+              <li>BUG VERSE (Code Debugging)</li>
+              <li>PITCHUP (Idea Presentation)</li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
-          <span>&copy; 2026 TechGenio 2K26 · K.L.N. College of Engineering. All rights reserved.</span>
-          <span>ENGINEERING · INNOVATION · TECHNOLOGY · COMPETITION · CREATIVITY</span>
+        {/* Bottom Tier */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
+          <p>© 2026 TechGenio · K.L.N. College of Engineering (Autonomous). All rights reserved.</p>
+
+          <button
+            onClick={scrollToTop}
+            className="liquid-glass rounded-full px-5 py-2.5 text-white/80 hover:text-white flex items-center gap-2 cursor-pointer transition-colors border border-white/10 shadow-sm hover:border-white/20"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </footer>

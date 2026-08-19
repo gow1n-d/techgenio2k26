@@ -1,224 +1,288 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight } from 'lucide-react';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { ArrowRight, Globe, Instagram, Twitter, Check } from 'lucide-react';
 import Navbar from './components/Navbar';
 import BackgroundVideo from './components/BackgroundVideo';
 import AboutSection from './components/AboutSection';
-import EventsSection from './components/EventsSection';
+import FeaturedVideoSection from './components/FeaturedVideoSection';
+import PhilosophySection from './components/PhilosophySection';
+import ServicesSection from './components/ServicesSection';
 import TimelineSection from './components/TimelineSection';
-import ScheduleSection from './components/ScheduleSection';
-import WhyParticipate from './components/WhyParticipate';
 import OrganizersSection from './components/OrganizersSection';
+import CtaSection from './components/CtaSection';
+import RegistrationModal from './components/RegistrationModal';
 import Footer from './components/Footer';
-import { useTypewriter } from './hooks/useTypewriter';
 import { CONFIG } from './data/techgenioData';
 
 const TECHGENIO_PILLS = [
-  "TECHXPO (Hardware)",
-  "NEURO PULSE (Quiz)",
-  "CODE FORGE (Hackathon)",
-  "BUG VERSE (Debugging)",
-  "PITCHUP (Idea Presentation)"
+  { id: "techxpo", label: "TECHXPO (Hardware)" },
+  { id: "neuro-pulse", label: "NEURO PULSE (Quiz)" },
+  { id: "code-forge", label: "CODE FORGE (Hackathon)" },
+  { id: "bug-verse", label: "BUG VERSE (Debugging)" },
+  { id: "pitchup", label: "PITCHUP (Idea Pitch)" }
 ];
 
 export default function App() {
-  const [selectedServices, setSelectedServices] = useState([]);
-  const { displayed, done } = useTypewriter("TECHGENIO 2K26\nEngineer's Day", 38, 500);
+  const [emailInput, setEmailInput] = useState('');
+  const [selectedPills, setSelectedPills] = useState(["techxpo", "code-forge"]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [preselectedArena, setPreselectedArena] = useState(null);
 
-  const toggleService = (service) => {
-    setSelectedServices((prev) =>
-      prev.includes(service)
-        ? prev.filter((s) => s !== service)
-        : [...prev, service]
+  // Top scroll progress bar for smooth animation feedback
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const togglePill = (id) => {
+    setSelectedPills((prev) =>
+      prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
     );
   };
 
+  const handleHeroSubmit = (e) => {
+    e.preventDefault();
+    setModalOpen(true);
+  };
+
+  const openRegisterWithArena = (arenaId) => {
+    setPreselectedArena(arenaId);
+    setModalOpen(true);
+  };
+
   return (
-    <div className="relative bg-white text-neutral-900 font-sans selection:bg-[#EAECE9] selection:text-[#1C2E1E] antialiased overflow-x-hidden">
-      {/* 1. Interactive Navbar */}
-      <Navbar />
+    <div className="min-h-screen bg-black text-white selection:bg-white/20 selection:text-white font-sans antialiased overflow-x-hidden relative">
+      {/* Top Scroll Indicator */}
+      <motion.div
+        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-amber-400 transform origin-left z-50 pointer-events-none"
+      />
 
-      {/* 2. Hero Section with Bounded 3D Video Background */}
-      <section id="hero" className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-white">
-        <BackgroundVideo />
+      {/* GLOBAL BACKGROUND ANIMATION: Stretches from Hero across all sections down to before Footer */}
+      <BackgroundVideo />
 
-        {/* Hero Content Layer */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 pt-28 lg:pt-32 flex flex-col justify-center flex-1">
-          {/* Institutional Logos Showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6"
-          >
-            <div className="flex items-center gap-2.5 sm:gap-3 bg-white/95 backdrop-blur-md p-2 sm:p-2.5 px-3 sm:px-4 rounded-2xl border border-neutral-200/90 shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/klnce.png"
-                alt="KLNCE Official Shield"
-                className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
-                title="K.L.N. College of Engineering (Autonomous)"
-              />
-              <div className="h-7 w-[1px] bg-neutral-200" />
-              <img
-                src="/iic.png"
-                alt="IIC Logo"
-                className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
-                title="Institution's Innovation Council"
-              />
-              <div className="h-7 w-[1px] bg-neutral-200" />
-              <img
-                src="/irp.png"
-                alt="IRP Logo"
-                className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
-                title="Innovation Research Park"
-              />
-            </div>
+      {/* Main Content Wrapper (Z-10 so it sits atop the animated background) */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {/* SECTION 1 -- HERO (full-viewport) */}
+        <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
+          {/* Navbar */}
+          <Navbar onOpenRegister={() => setModalOpen(true)} />
 
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-emerald-100/90 text-emerald-950 font-mono text-xs font-bold tracking-wider uppercase border border-emerald-300 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-700 animate-pulse" />
-              K.L.N. COLLEGE OF ENGINEERING · 09 SEP 2026
-            </span>
-          </motion.div>
+          {/* Hero Content */}
+          <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-6 text-center max-w-5xl mx-auto -translate-y-[1%] md:-translate-y-[2%]">
+            {/* BIG, PROMINENT INSTITUTIONAL LOGOS SHOWCASE */}
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.7 }}
+              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 bg-white/[0.08] backdrop-blur-xl p-3 sm:p-4 rounded-3xl sm:rounded-full border border-white/20 mb-8 shadow-2xl hover:border-white/35 transition-all"
+            >
+              {/* White pill holding the 3 high-res logos */}
+              <div className="flex items-center gap-4 sm:gap-5 bg-white p-2.5 sm:p-3 px-5 sm:px-6 rounded-2xl sm:rounded-full shadow-lg">
+                <img
+                  src="/klnce.png"
+                  alt="K.L.N. College of Engineering (Autonomous)"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain hover:scale-110 transition-transform"
+                  title="K.L.N. College of Engineering (Autonomous)"
+                />
+                <div className="h-8 sm:h-10 w-[1.5px] bg-neutral-200" />
+                <img
+                  src="/iic.png"
+                  alt="Institution's Innovation Council"
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain hover:scale-110 transition-transform"
+                  title="Institution's Innovation Council (IIC)"
+                />
+                <div className="h-8 sm:h-10 w-[1.5px] bg-neutral-200" />
+                <img
+                  src="/irp.png"
+                  alt="Innovation Research Park"
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain hover:scale-110 transition-transform"
+                  title="Innovation Research Park (IRP)"
+                />
+              </div>
 
-          {/* Typewriter Headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-[76px] font-bold tracking-tight text-black leading-[1.05] mb-6 select-none w-full whitespace-pre-wrap">
-              {displayed}
-              {!done && (
-                <span className="inline-block w-[3px] h-[1.05em] bg-black align-middle ml-[3px] animate-blink" />
-              )}
-            </h1>
-          </motion.div>
+              {/* Accompanying Institution Badges */}
+              <div className="flex flex-col text-left px-2 sm:pr-4">
+                <span className="text-white text-xs sm:text-sm font-semibold tracking-tight uppercase">
+                  K.L.N. College of Engineering
+                </span>
+                <span className="text-emerald-400 font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 mt-0.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  IIC × IRP under QC-IR · 09 SEP 2026
+                </span>
+              </div>
+            </motion.div>
 
-          {/* Description Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <p className="text-lg md:text-xl text-[#5A635A] leading-relaxed font-normal mb-10 max-w-2xl">
-              Organized by <strong>IIC × IRP under QC-IR</strong>.<br />
-              Engineering · Innovation · Technology · Competition · Creativity.
-            </p>
-          </motion.div>
+            {/* Heading with Instrument Serif */}
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight whitespace-nowrap font-serif mb-5 select-none"
+            >
+              TechGenio <em className="italic font-serif text-white/80 font-normal">2K26</em>
+            </motion.h1>
 
-          {/* Interactive Multi-Select Service Pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full max-w-3xl"
-          >
-            <h2 className="text-2xl font-medium tracking-tight mb-2 text-black">
-              Which arena will you conquer?
-            </h2>
-            <p className="opacity-85 text-[#738273] mb-6 text-sm sm:text-base">
-              Select all events you want to register for (31 Aug – 09 Sep 2026)
-            </p>
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-white/85 text-sm md:text-base leading-relaxed px-4 max-w-2xl mb-7 font-normal"
+            >
+              Organized by <strong>IIC × IRP under QC-IR</strong>. Celebrate National Engineer's Day with 5 premier technical arenas: Hardware Expo, Neural Quiz, Software Hackathon, Precision Debugging & Startup Pitching.
+            </motion.p>
 
-            {/* Event Pills Container */}
-            <div className="flex flex-wrap gap-2.5 sm:gap-3 mb-6">
-              {TECHGENIO_PILLS.map((service) => {
-                const isSelected = selectedServices.includes(service);
+            {/* Arena Multi-Select Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="flex flex-wrap justify-center gap-2 mb-7 max-w-2xl"
+            >
+              {TECHGENIO_PILLS.map((pill) => {
+                const isSelected = selectedPills.includes(pill.id);
                 return (
-                  <motion.button
-                    key={service}
+                  <button
+                    key={pill.id}
+                    onClick={() => togglePill(pill.id)}
                     type="button"
-                    onClick={() => toggleService(service)}
-                    whileTap={{ scale: 0.96 }}
-                    className={`px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-200 flex items-center gap-2 cursor-pointer ${
+                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
                       isSelected
-                        ? 'bg-[#1C2E1E] text-white shadow-md shadow-emerald-950/10 transform'
-                        : 'bg-white text-[#1C2E1E] border border-neutral-200 hover:bg-[#F1F3F1]/70'
+                        ? 'bg-white text-black font-semibold shadow-md'
+                        : 'liquid-glass text-white/70 hover:text-white hover:bg-white/10'
                     }`}
                   >
-                    <AnimatePresence>
-                      {isSelected && (
-                        <motion.span
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0, opacity: 0 }}
-                          transition={{
-                            type: 'spring',
-                            stiffness: 300,
-                            damping: 20,
-                          }}
-                          className="flex items-center justify-center"
-                        >
-                          <Check className="w-4 h-4 text-white stroke-[2.5]" />
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
-                    <span>{service}</span>
-                  </motion.button>
+                    {isSelected && <Check className="w-3 h-3 text-black stroke-[3]" />}
+                    <span>{pill.label}</span>
+                  </button>
                 );
               })}
-            </div>
+            </motion.div>
 
-            {/* Contingent Feedback Status Banner */}
-            <div className="min-h-[60px] flex items-center">
-              <AnimatePresence mode="wait">
-                {selectedServices.length === 0 ? (
-                  <motion.div
-                    key="empty"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.6 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="italic text-xs sm:text-sm text-[#738273]"
-                  >
-                    Please click to select event arenas above to register.
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="active"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 300,
-                      damping: 25,
-                    }}
-                    className="w-full overflow-hidden"
-                  >
-                    <div className="bg-[#FAFBF9] border border-[#EAECE9] rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                      <span className="text-sm font-medium text-[#1C2E1E]">
-                        Ready to register for:{' '}
-                        <strong className="font-semibold text-black">
-                          {selectedServices.join(', ')}
-                        </strong>
-                      </span>
-                      <a
-                        href={CONFIG.REGISTRATION_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-white bg-[#1C2E1E] px-5 py-2 rounded-full uppercase text-xs font-semibold tracking-wider hover:bg-[#28422B] transition-colors whitespace-nowrap shadow-xs"
-                      >
-                        <span>Register Now</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            {/* Email Input & Submit Bar */}
+            <motion.form
+              onSubmit={handleHeroSubmit}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="max-w-xl w-full liquid-glass rounded-full pl-6 pr-2 py-2 flex items-center gap-3 mb-6 shadow-2xl border border-white/20"
+            >
+              <input
+                type="email"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                placeholder="Enter your college email to register"
+                className="bg-transparent border-none outline-none text-white placeholder:text-white/40 text-sm md:text-base flex-1 w-full focus:ring-0"
+              />
+              <button
+                type="submit"
+                className="bg-white rounded-full p-3 text-black hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-md"
+                aria-label="Submit Email"
+              >
+                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+              </button>
+            </motion.form>
 
-      {/* 4. Full Section Architecture */}
-      <AboutSection />
-      <EventsSection />
-      <TimelineSection />
-      <ScheduleSection />
-      <WhyParticipate />
-      <OrganizersSection />
-      <Footer />
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="flex items-center gap-4"
+            >
+              <button
+                onClick={() => {
+                  const el = document.getElementById('arenas');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors cursor-pointer border border-white/20"
+              >
+                Explore 5 Arenas
+              </button>
+              <button
+                onClick={() => setModalOpen(true)}
+                className="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors cursor-pointer hidden sm:inline-block border border-white/20"
+              >
+                Quick Register
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Social Icons */}
+          <div className="relative z-10 flex justify-center gap-4 pb-10">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="liquid-glass rounded-full p-3.5 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110 border border-white/15"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="liquid-glass rounded-full p-3.5 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110 border border-white/15"
+              aria-label="Twitter"
+            >
+              <Twitter className="w-4 h-4" />
+            </a>
+            <a
+              href="https://klnce.edu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="liquid-glass rounded-full p-3.5 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110 border border-white/15"
+              aria-label="College Portal"
+            >
+              <Globe className="w-4 h-4" />
+            </a>
+          </div>
+        </section>
+
+        {/* SECTION 2 -- ABOUT SECTION */}
+        <AboutSection />
+
+        {/* SECTION 3 -- FEATURED VIDEO */}
+        <FeaturedVideoSection
+          onExploreMore={() => {
+            const el = document.getElementById('arenas');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+
+        {/* SECTION 4 -- PHILOSOPHY / INNOVATION x VISION */}
+        <PhilosophySection />
+
+        {/* SECTION 5 -- SERVICES / WHAT WE DO (THE 5 ARENAS) */}
+        <ServicesSection onRegisterArena={openRegisterWithArena} />
+
+        {/* TIMELINE & SCHEDULE SECTION */}
+        <TimelineSection />
+
+        {/* PATRONS & ORGANIZERS */}
+        <OrganizersSection />
+
+        {/* CALL TO ACTION SECTION */}
+        <CtaSection onOpenRegister={() => setModalOpen(true)} />
+
+        {/* REGISTRATION MODAL */}
+        <RegistrationModal
+          isOpen={modalOpen}
+          onClose={() => {
+            setModalOpen(false);
+            setPreselectedArena(null);
+          }}
+          preselectedArena={preselectedArena}
+          initialEmail={emailInput}
+        />
+
+        {/* FOOTER */}
+        <Footer />
+      </div>
     </div>
   );
 }
