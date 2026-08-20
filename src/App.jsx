@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { ArrowUpRight, ArrowDown } from 'lucide-react';
 import Navbar from './components/Navbar';
 import BackgroundVideo from './components/BackgroundVideo';
 import AboutSection from './components/AboutSection';
@@ -9,40 +9,17 @@ import ServicesSection from './components/ServicesSection';
 import TimelineSection from './components/TimelineSection';
 import OrganizersSection from './components/OrganizersSection';
 import CtaSection from './components/CtaSection';
-import RegistrationModal from './components/RegistrationModal';
 import Footer from './components/Footer';
-
-const TECHGENIO_PILLS = [
-  { id: "techxpo", label: "TECHXPO (Hardware)" },
-  { id: "neuro-pulse", label: "NEURO PULSE (Quiz)" },
-  { id: "code-forge", label: "CODE FORGE (Hackathon)" },
-  { id: "bug-verse", label: "BUG VERSE (Debugging)" },
-  { id: "pitchup", label: "PITCHUP (Idea Pitch)" }
-];
+import { REGISTRATION_URL } from './data/techgenioData';
 
 export default function App() {
-  const [selectedPills, setSelectedPills] = useState(["techxpo", "code-forge"]);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [preselectedArena, setPreselectedArena] = useState(null);
-
-  // Top scroll progress bar for smooth animation feedback
+  // Top scroll progress indicator
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
-
-  const togglePill = (id) => {
-    setSelectedPills((prev) =>
-      prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
-    );
-  };
-
-  const openRegisterWithArena = (arenaId) => {
-    setPreselectedArena(arenaId);
-    setModalOpen(true);
-  };
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white/20 selection:text-white font-sans antialiased overflow-x-hidden relative">
@@ -52,50 +29,49 @@ export default function App() {
         className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-amber-400 transform origin-left z-50 pointer-events-none"
       />
 
-      {/* GLOBAL BACKGROUND ANIMATION: Stretches from Hero across all sections down to before Footer */}
+      {/* Global Background Technical Grid & Soft Ambient Light */}
       <BackgroundVideo />
 
-      {/* Main Content Wrapper (Z-10 so it sits atop the animated background) */}
+      {/* Main Content Wrapper */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        {/* SECTION 1 -- HERO (full-viewport) */}
-        <section className="relative min-h-screen flex flex-col justify-between overflow-hidden pb-12">
-          {/* Navbar */}
-          <Navbar onOpenRegister={() => setModalOpen(true)} />
+        {/* Navbar */}
+        <Navbar />
 
-          {/* Hero Content */}
-          <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12 text-center max-w-5xl mx-auto">
-            {/* BIG, PROMINENT INSTITUTIONAL LOGOS SHOWCASE */}
+        {/* SECTION 1 -- HERO */}
+        <section className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center items-center px-4 sm:px-6 py-12 md:py-20 text-center overflow-hidden">
+          <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl mx-auto my-auto">
+            {/* Prominent Institutional Logos Badge */}
             <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              initial={{ opacity: 0, y: -20, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 bg-white/[0.08] backdrop-blur-xl p-3 sm:p-4 rounded-3xl sm:rounded-full border border-white/20 mb-8 shadow-2xl hover:border-white/35 transition-all"
+              transition={{ duration: 0.6 }}
+              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-white/[0.06] backdrop-blur-xl p-2.5 sm:p-3.5 rounded-3xl sm:rounded-full border border-white/15 mb-8 shadow-2xl hover:border-white/30 transition-all"
             >
-              {/* White pill holding the 3 high-res logos */}
-              <div className="flex items-center gap-4 sm:gap-5 bg-white p-2.5 sm:p-3 px-5 sm:px-6 rounded-2xl sm:rounded-full shadow-lg">
+              {/* White capsule holding institutional logos */}
+              <div className="flex items-center gap-3.5 sm:gap-4 bg-white p-2 sm:p-2.5 px-4 sm:px-5 rounded-2xl sm:rounded-full shadow-md">
                 <img
                   src="/klnce.png"
-                  alt="K.L.N. College of Engineering (Autonomous)"
-                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain hover:scale-110 transition-transform"
+                  alt="K.L.N. College of Engineering"
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain hover:scale-105 transition-transform"
                   title="K.L.N. College of Engineering (Autonomous)"
                 />
-                <div className="h-8 sm:h-10 w-[1.5px] bg-neutral-200" />
+                <div className="h-7 sm:h-8 w-[1.5px] bg-neutral-300" />
                 <img
                   src="/iic.png"
                   alt="Institution's Innovation Council"
-                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain hover:scale-110 transition-transform"
+                  className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 object-contain hover:scale-105 transition-transform"
                   title="Institution's Innovation Council (IIC)"
                 />
-                <div className="h-8 sm:h-10 w-[1.5px] bg-neutral-200" />
+                <div className="h-7 sm:h-8 w-[1.5px] bg-neutral-300" />
                 <img
                   src="/irp.png"
                   alt="Innovation Research Park"
-                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain hover:scale-110 transition-transform"
+                  className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 object-contain hover:scale-105 transition-transform"
                   title="Innovation Research Park (IRP)"
                 />
               </div>
 
-              {/* Accompanying Institution Badges */}
+              {/* Institution details */}
               <div className="flex flex-col text-left px-2 sm:pr-4">
                 <span className="text-white text-xs sm:text-sm font-semibold tracking-tight uppercase">
                   K.L.N. College of Engineering
@@ -107,51 +83,64 @@ export default function App() {
               </div>
             </motion.div>
 
-            {/* Heading with Instrument Serif */}
+            {/* Main Title */}
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight whitespace-nowrap font-serif mb-5 select-none"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight font-serif mb-3 select-none"
             >
               TechGenio <em className="italic font-serif text-white/80 font-normal">2K26</em>
             </motion.h1>
+
+            {/* Second Edition Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="flex items-center justify-center gap-2 mb-6"
+            >
+              <span className="text-xs sm:text-sm md:text-base font-mono uppercase tracking-[0.25em] text-emerald-400 font-semibold px-4 py-1 rounded-full bg-emerald-950/50 border border-emerald-500/30 inline-flex items-center gap-2 shadow-lg shadow-emerald-950/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Second Edition
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              </span>
+            </motion.div>
 
             {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-white/85 text-sm md:text-base leading-relaxed px-4 max-w-2xl mb-8 font-normal"
+              className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-normal px-2"
             >
-              Organized by <strong>IIC × IRP under QC-IR</strong>. Celebrate National Engineer's Day with 5 premier technical arenas: Hardware Expo, Neural Quiz, Software Hackathon, Precision Debugging & Startup Pitching.
+              Organized by <strong>IIC × IRP under QC-IR</strong>. Celebrate National Engineers' Day across 6 premier technical arenas: Hardware Expo, Neural Quiz, Software Hackathon, Precision Debugging, Idea Pitching & Main-Day Specials.
             </motion.p>
 
-            {/* Arena Multi-Select Pills */}
+            {/* Primary & Secondary Hero CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="flex flex-wrap justify-center gap-2 max-w-2xl"
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
             >
-              {TECHGENIO_PILLS.map((pill) => {
-                const isSelected = selectedPills.includes(pill.id);
-                return (
-                  <button
-                    key={pill.id}
-                    onClick={() => togglePill(pill.id)}
-                    type="button"
-                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
-                      isSelected
-                        ? 'bg-white text-black font-semibold shadow-md'
-                        : 'liquid-glass text-white/70 hover:text-white hover:bg-white/10'
-                    }`}
-                  >
-                    {isSelected && <Check className="w-3 h-3 text-black stroke-[3]" />}
-                    <span>{pill.label}</span>
-                  </button>
-                );
-              })}
+              <a
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95 shadow-xl inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400"
+              >
+                <span>Register Now</span>
+                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+              </a>
+
+              <a
+                href="#arenas"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full liquid-glass text-white/90 hover:text-white font-medium text-sm sm:text-base hover:bg-white/10 transition-all border border-white/20 inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              >
+                <span>Explore Arenas</span>
+                <ArrowDown className="w-4 h-4 opacity-75" />
+              </a>
             </motion.div>
           </div>
         </section>
@@ -162,8 +151,8 @@ export default function App() {
         {/* SECTION 3 -- PHILOSOPHY / INNOVATION x VISION */}
         <PhilosophySection />
 
-        {/* SECTION 4 -- SERVICES / WHAT WE DO (THE 5 ARENAS) */}
-        <ServicesSection onRegisterArena={openRegisterWithArena} />
+        {/* SECTION 4 -- 6 FLAGSHIP ARENAS */}
+        <ServicesSection />
 
         {/* SECTION 5 -- TIMELINE & SCHEDULE */}
         <TimelineSection />
@@ -172,17 +161,7 @@ export default function App() {
         <OrganizersSection />
 
         {/* SECTION 7 -- CALL TO ACTION */}
-        <CtaSection onOpenRegister={() => setModalOpen(true)} />
-
-        {/* REGISTRATION MODAL */}
-        <RegistrationModal
-          isOpen={modalOpen}
-          onClose={() => {
-            setModalOpen(false);
-            setPreselectedArena(null);
-          }}
-          preselectedArena={preselectedArena}
-        />
+        <CtaSection />
 
         {/* FOOTER */}
         <Footer />

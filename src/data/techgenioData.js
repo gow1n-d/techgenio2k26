@@ -1,13 +1,15 @@
 /**
  * TECHGENIO 2K26 — CENTRAL DATA & CONFIGURATION
  * -----------------------------------------------------------
- * Single source of truth for TechGenio 2K26 Engineers Day Celebration
+ * Single source of truth for TechGenio 2K26 Engineers' Day Celebration
  */
 
+export const REGISTRATION_URL = "https://forms.gle/qcKEv7iHQ3k7cxVm7";
+
 export const CONFIG = {
-  REGISTRATION_URL: "https://docs.google.com/forms/d/e/1FAIpQLSeTechGenio2K26Registration/viewform",
+  REGISTRATION_URL: "https://forms.gle/qcKEv7iHQ3k7cxVm7",
   EVENT_NAME: "TECHGENIO 2K26",
-  EVENT_TYPE: "ENGINEER'S DAY CELEBRATION",
+  EVENT_TYPE: "ENGINEERS' DAY CELEBRATION",
   INSTITUTION: "K.L.N. COLLEGE OF ENGINEERING",
   INSTITUTION_TAGLINE: "An Autonomous Institution | Pottapalayam, Madurai - 630612",
   ORGANIZING_BODIES: "IIC × IRP under QC-IR",
@@ -25,7 +27,8 @@ export const eventShowcase = [
     description: "Showcase innovative hardware projects, working prototypes, embedded automation systems, robotics, and physical engineering solutions.",
     motif: "Hardware circuit · PCB · Components · Prototype",
     stage: "09 SEP · MAIN DAY EXPO",
-    badgeColor: "bg-amber-100 text-amber-900 border-amber-300"
+    badgeColor: "bg-amber-400/10 text-amber-300 border-amber-400/30",
+    accentColor: "text-amber-400"
   },
   {
     id: "neuro-pulse",
@@ -33,10 +36,11 @@ export const eventShowcase = [
     name: "NEURO PULSE",
     category: "Technical Quiz",
     tagline: "Battle of Technical Acumen & Quick Thinking",
-    description: "A high-octane technology quiz testing knowledge, engineering reasoning, algorithmic logic, and rapid deduction across 3 rounds.",
+    description: "A high-octane technology quiz testing knowledge, engineering reasoning, algorithmic logic, and rapid deduction across preliminary and final rounds.",
     motif: "Neural nodes · Data points · Technical trivia",
     stage: "31 AUG (R1) · 07 SEP (R2) · 09 SEP (FINAL)",
-    badgeColor: "bg-purple-100 text-purple-900 border-purple-300"
+    badgeColor: "bg-purple-400/10 text-purple-300 border-purple-400/30",
+    accentColor: "text-purple-400"
   },
   {
     id: "code-forge",
@@ -47,7 +51,8 @@ export const eventShowcase = [
     description: "A multi-stage software development challenge focused on building innovative web, cloud, and algorithmic solutions under sprint conditions.",
     motif: "Code · Terminal · Brackets · Binary logic",
     stage: "02 SEP (R1) · 08 SEP (FINAL)",
-    badgeColor: "bg-cyan-100 text-cyan-900 border-cyan-300"
+    badgeColor: "bg-cyan-400/10 text-cyan-300 border-cyan-400/30",
+    accentColor: "text-cyan-400"
   },
   {
     id: "bug-verse",
@@ -58,7 +63,8 @@ export const eventShowcase = [
     description: "A precision debugging competition where participants identify, analyze, and fix logic, concurrency, and syntactic programming errors.",
     motif: "Bug hunter · Error inspection · Code fragments",
     stage: "31 AUG (PRELIMS) · 07 SEP (FINAL)",
-    badgeColor: "bg-rose-100 text-rose-900 border-rose-300"
+    badgeColor: "bg-rose-400/10 text-rose-300 border-rose-400/30",
+    accentColor: "text-rose-400"
   },
   {
     id: "pitchup",
@@ -69,7 +75,20 @@ export const eventShowcase = [
     description: "Participants present innovative engineering concepts, startup blueprints, and practical solutions convincingly before an expert jury.",
     motif: "Lightbulb · Presentation screen · Startup pitch",
     stage: "01 SEP · FULL DAY SPRINT",
-    badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-300"
+    badgeColor: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
+    accentColor: "text-emerald-400"
+  },
+  {
+    id: "fun-events",
+    number: "06",
+    name: "Multiple Fun Events",
+    category: "Main-Day Specials",
+    tagline: "Engaging Challenges & Interactive Activities",
+    description: "A collection of quick challenges, engaging activities and fun events happening throughout the main day of TechGenio 2K26.",
+    motif: "Spot challenges · Interactive games · Main-day excitement",
+    stage: "09 SEP · MAIN DAY SPECIAL",
+    badgeColor: "bg-indigo-400/10 text-indigo-300 border-indigo-400/30",
+    accentColor: "text-indigo-400"
   }
 ];
 
@@ -138,16 +157,21 @@ export const timelineData = [
     isMainDay: true,
     events: [
       { name: "HARDWARE (TechXpo)", stage: "Project Expo · Full Day", desc: "Grand exhibition of physical engineering hardware prototypes, IoT systems, and robotics." },
-      { name: "QUIZ (Neuro Pulse)", stage: "Grand Finale", desc: "Championship stage round conducted before the Engineers Day assembly (Alternative Track)." }
+      { name: "QUIZ (Neuro Pulse)", stage: "Grand Finale", desc: "Championship stage round conducted before the Engineers' Day assembly (Alternative Track)." },
+      { name: "MULTIPLE FUN EVENTS", stage: "Throughout Main Day", desc: "Engaging quick-fire challenges, interactive tech games, and main-day special activities." }
     ]
   }
 ];
 
+/**
+ * Organizers & Patrons in Institutional Hierarchy
+ * Order requirement: Principal -> Dr. S. Parthasarathy -> Management & Co-Patrons -> Event Coordinator
+ */
 export const institutionalPatrons = [
-  { role: "CONVENER", name: "Dr. S. Parthasarthy", designation: "QC-IR Head", tag: "QC-IR" },
-  { role: "CHIEF PATRON", name: "Dr. K. N. K. Ganesh", designation: "Secretary", tag: "Management" },
   { role: "CHIEF PATRON", name: "Er. K. N. K. Karthik", designation: "President", tag: "Management" },
+  { role: "CHIEF PATRON", name: "Dr. K. N. K. Ganesh", designation: "Secretary", tag: "Management" },
   { role: "PATRON", name: "Dr. A. V. Ram Prasad", designation: "Principal", tag: "Institution" },
+  { role: "CONVENER", name: "Dr. S. Parthasarathy", designation: "QC-IR Head", tag: "QC-IR" },
   { role: "EVENT COORDINATOR", name: "Mr. R. Thangasankaran", designation: "IRP Coordinator", tag: "IRP" }
 ];
 
@@ -163,4 +187,3 @@ export const organizersList = [
   ...institutionalPatrons,
   ...studentCommittee
 ];
-

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Calendar, Star, Sparkles, Clock, CheckCircle2, Trophy, Flame } from 'lucide-react';
+import { Calendar, Star, Sparkles, Clock, CheckCircle2, Trophy } from 'lucide-react';
 import { timelineData } from '../data/techgenioData';
 
 export default function TimelineSection() {
@@ -9,10 +9,10 @@ export default function TimelineSection() {
 
   return (
     <section id="schedule" className="relative bg-transparent py-20 md:py-32 px-4 sm:px-6 overflow-hidden border-t border-white/10">
-      {/* Background ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
+      {/* Background subtle ambient glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-emerald-500/[0.03] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-[450px] h-[450px] bg-cyan-500/[0.03] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-amber-500/[0.03] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
@@ -26,22 +26,21 @@ export default function TimelineSection() {
             <Clock className="w-3.5 h-3.5 text-emerald-400" />
             <span>31 August – 09 September 2026</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mb-4 font-normal">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl text-white tracking-tight mb-4 font-normal">
             Event <span className="font-serif italic text-white/70">Timeline</span>
           </h2>
           <p className="text-white/60 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Follow the chronological path from preliminary rounds to the grand Engineers Day showcase celebration.
+            Follow the chronological path from preliminary rounds to the grand Engineers' Day showcase celebration.
           </p>
         </motion.div>
 
         {/* Chronological Timeline Container */}
         <div className="relative">
-          {/* Central Connecting Spine */}
-          {/* Mobile line (left-aligned) */}
+          {/* Mobile connecting spine (left-aligned) */}
           <div className="absolute left-6 top-6 bottom-6 w-[2px] bg-gradient-to-b from-cyan-500/40 via-emerald-500/50 via-purple-500/50 to-amber-400 md:hidden" />
           
-          {/* Desktop line (centered) */}
-          <div className="hidden md:block absolute left-1/2 top-6 bottom-6 -translate-x-1/2 w-[2px] bg-gradient-to-b from-cyan-500/30 via-emerald-500/40 via-purple-500/40 to-amber-400/80 shadow-[0_0_15px_rgba(52,211,153,0.3)]" />
+          {/* Desktop connecting spine (centered) */}
+          <div className="hidden md:block absolute left-1/2 top-6 bottom-6 -translate-x-1/2 w-[2px] bg-gradient-to-b from-cyan-500/30 via-emerald-500/40 via-purple-500/40 to-amber-400/80 shadow-[0_0_15px_rgba(52,211,153,0.2)]" />
 
           {/* Timeline Nodes */}
           <div className="space-y-10 md:space-y-16">
@@ -54,7 +53,7 @@ export default function TimelineSection() {
                   key={idx}
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                  transition={{ duration: 0.55, delay: 0.08 * idx }}
+                  transition={{ duration: 0.55, delay: 0.07 * idx }}
                   className={`relative flex items-start md:items-center ${
                     isEven ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
@@ -64,11 +63,11 @@ export default function TimelineSection() {
                     <div
                       className={`liquid-glass rounded-2xl md:rounded-3xl p-6 sm:p-7 border transition-all duration-300 relative group overflow-hidden ${
                         isMain
-                          ? 'border-amber-400/50 bg-gradient-to-br from-amber-950/20 via-neutral-900/80 to-amber-900/10 shadow-[0_0_30px_rgba(251,191,36,0.12)] hover:border-amber-400/80'
-                          : 'border-white/10 hover:border-white/25 hover:bg-white/[0.04]'
+                          ? 'border-amber-400/50 bg-gradient-to-br from-amber-950/20 via-neutral-900/80 to-amber-900/10 shadow-[0_0_30px_rgba(251,191,36,0.1)] hover:border-amber-400/80'
+                          : 'border-white/10 hover:border-white/25 hover:bg-white/[0.03]'
                       }`}
                     >
-                      {/* Subtle corner badge / indicator */}
+                      {/* Top date + badge */}
                       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
                         <div className="flex items-center gap-2.5">
                           <span
@@ -95,15 +94,15 @@ export default function TimelineSection() {
                         </span>
                       </div>
 
-                      {/* Horizontal divider */}
+                      {/* Divider */}
                       <div
                         className={`w-full h-px mb-4 ${
                           isMain ? 'bg-gradient-to-r from-amber-400/30 via-amber-400/10 to-transparent' : 'bg-white/10'
                         }`}
                       />
 
-                      {/* Events for this milestone */}
-                      <div className="space-y-4">
+                      {/* Events for this date */}
+                      <div className="space-y-3.5">
                         {item.events.map((ev, evIdx) => (
                           <div
                             key={evIdx}
@@ -132,22 +131,21 @@ export default function TimelineSection() {
                         ))}
                       </div>
 
-                      {/* Special Highlight for Main Celebration Day */}
+                      {/* Highlight for Main Day */}
                       {isMain && (
                         <div className="mt-5 pt-3.5 border-t border-amber-400/20 flex items-center justify-between text-xs text-amber-300/90 font-mono flex-wrap gap-2">
                           <div className="flex items-center gap-2">
                             <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
-                            <span>Grand Engineers Day Finale & Awards Assembly</span>
+                            <span>Grand Engineers' Day Finale & Awards Assembly</span>
                           </div>
                           <span className="text-[10px] px-2 py-0.5 rounded bg-amber-400/20 text-amber-200 uppercase tracking-widest font-bold">
-                            Apex Event
+                            Main Event
                           </span>
                         </div>
                       )}
                     </div>
                   </div>
 
-                  {/* Central Node / Marker */}
                   {/* Mobile Node Position */}
                   <div className="absolute left-6 -translate-x-1/2 top-7 md:hidden flex items-center justify-center">
                     <div
@@ -170,8 +168,8 @@ export default function TimelineSection() {
                     <div
                       className={`w-11 h-11 rounded-full flex items-center justify-center border-2 backdrop-blur-md transition-transform duration-300 hover:scale-110 shadow-lg ${
                         isMain
-                          ? 'bg-gradient-to-br from-amber-400 to-amber-600 border-amber-200 text-neutral-950 shadow-[0_0_25px_rgba(251,191,36,0.7)]'
-                          : 'bg-neutral-900/95 border-emerald-400/80 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.3)]'
+                          ? 'bg-gradient-to-br from-amber-400 to-amber-600 border-amber-200 text-neutral-950 shadow-[0_0_25px_rgba(251,191,36,0.5)]'
+                          : 'bg-neutral-900/95 border-emerald-400/80 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.2)]'
                       }`}
                     >
                       {isMain ? (
@@ -183,7 +181,7 @@ export default function TimelineSection() {
                       )}
                     </div>
 
-                    {/* Horizontal Connector Line towards the active card */}
+                    {/* Connector Line */}
                     <div
                       className={`absolute top-1/2 -translate-y-1/2 h-[2px] w-6 ${
                         isEven
@@ -193,7 +191,7 @@ export default function TimelineSection() {
                     />
                   </div>
 
-                  {/* Desktop spacer for the other half */}
+                  {/* Desktop spacer */}
                   <div className="hidden md:block md:w-[calc(50%-2.5rem)]" />
                 </motion.div>
               );

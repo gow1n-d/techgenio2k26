@@ -29,9 +29,9 @@ export default function PhilosophySection() {
           </h2>
         </motion.div>
 
-        {/* Responsive Grid without empty gaps */}
+        {/* Responsive Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-12 items-center">
-          {/* Left Column: Snug, Gapless Portrait Video Container */}
+          {/* Left Column: Portrait Showcase */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
@@ -45,15 +45,14 @@ export default function PhilosophySection() {
                 autoPlay
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 className="w-full h-auto block object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              {/* Subtle bottom edge gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
-          {/* Right Column: Text Blocks */}
+          {/* Right Column: Philosophy Blocks */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
@@ -64,7 +63,7 @@ export default function PhilosophySection() {
             <div className="liquid-glass rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-emerald-500/30 transition-all">
               <div className="text-emerald-400/90 text-xs tracking-widest uppercase mb-3 font-semibold font-mono flex items-center gap-2">
                 <Target className="w-4 h-4" />
-                Choose your space · 5 Arenas
+                Choose your space · 6 Arenas
               </div>
               <p className="text-white/75 text-sm sm:text-base leading-relaxed font-normal">
                 Every meaningful breakthrough begins at the intersection of disciplined strategy and remarkable creative vision. TechGenio 2K26 operates at that crossroads, turning bold engineering ideas into tangible outcomes that move people and reshape industries.
@@ -78,7 +77,7 @@ export default function PhilosophySection() {
                 Shape the future · IIC × IRP under QC-IR
               </div>
               <p className="text-white/75 text-sm sm:text-base leading-relaxed font-normal">
-                We believe that the best work emerges when curiosity meets conviction. Our process is designed to uncover hidden opportunities and translate them into experiences that resonate long after the first impression.
+                We believe that the best work emerges when curiosity meets conviction. Our process is designed to uncover hidden opportunities and translate them into experiences that resonate long after the celebration.
               </p>
             </div>
           </motion.div>

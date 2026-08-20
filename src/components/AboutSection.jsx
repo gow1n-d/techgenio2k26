@@ -1,23 +1,23 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Award, Zap, Compass, Cpu, ArrowUpRight } from 'lucide-react';
+import { Award, Zap, Compass, Cpu } from 'lucide-react';
 import { CONFIG } from '../data/techgenioData';
 
 export default function AboutSection() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+  const isInView = useInView(containerRef, { once: true, amount: 0.15 });
 
   const highlights = [
     {
       icon: Cpu,
-      title: "05 Flagship Arenas",
-      desc: "Hardware Expo, Neural Quiz, Software Hackathon, Debugging & Idea Pitching.",
+      title: "06 Flagship Arenas",
+      desc: "Hardware Expo, Neural Quiz, Software Hackathon, Debugging, Idea Pitching & Fun Events.",
       accent: "text-amber-400"
     },
     {
       icon: Zap,
       title: "10-Day Tech Festival",
-      desc: "Sprint phases starting 31 August leading to the Grand Engineers Day Finale on 09 Sept.",
+      desc: "Sprint phases starting 31 August leading to the Grand Engineers' Day Finale on 09 Sept.",
       accent: "text-cyan-400"
     },
     {
@@ -38,10 +38,10 @@ export default function AboutSection() {
     <section
       id="about"
       ref={containerRef}
-      className="relative bg-transparent pt-24 md:pt-36 pb-16 md:pb-24 px-6 overflow-hidden"
+      className="relative bg-transparent pt-24 md:pt-36 pb-16 md:pb-24 px-4 sm:px-6 overflow-hidden"
     >
-      {/* Subtle radial ambient lighting to prevent empty black gaps */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.06)_0%,_transparent_70%)] pointer-events-none" />
+      {/* Subtle radial ambient lighting */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Label */}
@@ -55,18 +55,18 @@ export default function AboutSection() {
           About TechGenio 2K26 · KLNCE
         </motion.div>
 
-        {/* Heading without 'then' */}
+        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl text-white leading-[1.15] tracking-tight mb-12"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.15] tracking-tight mb-8 md:mb-12"
         >
           Pioneering{' '}
-          <span className="font-serif italic text-white/70">engineering ideas</span> for{' '}
+          <span className="font-serif italic text-white/75">engineering ideas</span> for{' '}
           <br className="hidden md:inline" />
           minds that{' '}
-          <span className="font-serif italic text-white/70">create, build, and inspire.</span>
+          <span className="font-serif italic text-white/75">create, build, and inspire.</span>
         </motion.h2>
 
         {/* Description intro */}
@@ -74,9 +74,9 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white/70 text-base md:text-lg max-w-3xl leading-relaxed mb-16"
+          className="text-white/70 text-base md:text-lg max-w-3xl leading-relaxed mb-12 md:mb-16"
         >
-          Hosted at <strong>K.L.N. College of Engineering (Autonomous)</strong> to celebrate National Engineer's Day, TechGenio 2K26 is the ultimate proving ground for creative engineering, algorithmic mastery, and hardware invention.
+          Hosted at <strong>K.L.N. College of Engineering (Autonomous)</strong> to celebrate National Engineers' Day, TechGenio 2K26 is the ultimate proving ground for creative engineering, algorithmic mastery, hardware invention, and collaborative problem solving.
         </motion.p>
 
         {/* Highlights Grid */}
@@ -88,7 +88,7 @@ export default function AboutSection() {
                 key={idx}
                 initial={{ opacity: 0, y: 25 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
-                transition={{ duration: 0.5, delay: 0.15 * idx }}
+                transition={{ duration: 0.5, delay: 0.12 * idx }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className="liquid-glass rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all group flex flex-col justify-between"
               >
@@ -99,7 +99,7 @@ export default function AboutSection() {
                   <h3 className="text-white font-semibold text-lg mb-2 tracking-tight">
                     {item.title}
                   </h3>
-                  <p className="text-white/50 text-sm leading-relaxed">
+                  <p className="text-white/55 text-sm leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
