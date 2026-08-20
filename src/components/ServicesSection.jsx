@@ -1,12 +1,32 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight, Cpu, HelpCircle, Code, Bug, Lightbulb, Sparkles, Calendar, CheckCircle2 } from 'lucide-react';
-import { eventShowcase, REGISTRATION_URL } from '../data/techgenioData';
+import { eventShowcase } from '../data/techgenioData';
 
 export default function ServicesSection() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
   const [selectedArenaModal, setSelectedArenaModal] = useState(null);
+
+  // Lock background body scroll when modal is open
+  useEffect(() => {
+    if (selectedArenaModal) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setSelectedArenaModal(null);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        document.body.style.overflow = prevOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [selectedArenaModal]);
 
   const arenaIcons = {
     "techxpo": Cpu,
@@ -134,6 +154,19 @@ export default function ServicesSection() {
                     </div>
                   </div>
 
+                  {/* Event Showcase Image */}
+                  {item.image && (
+                    <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-white/25 transition-all shadow-md">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    </div>
+                  )}
+
                   {/* Title & Tagline */}
                   <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-1.5 group-hover:text-white transition-colors">
                     {item.name}
@@ -168,11 +201,11 @@ export default function ServicesSection() {
         {/* Interactive Arena Details Modal */}
         {selectedArenaModal && (
           <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn overflow-y-auto"
             onClick={() => setSelectedArenaModal(null)}
           >
             <div 
-              className="liquid-glass rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-white/20 shadow-2xl relative bg-neutral-950/90"
+              className="liquid-glass rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-white/20 shadow-2xl relative bg-neutral-950/90 max-h-[90vh] overflow-y-auto my-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -182,6 +215,18 @@ export default function ServicesSection() {
               >
                 ✕
               </button>
+
+              {/* Modal Image */}
+              {selectedArenaModal.image && (
+                <div className="relative w-full h-48 sm:h-52 rounded-2xl overflow-hidden mb-6 border border-white/15 shadow-lg">
+                  <img
+                    src={selectedArenaModal.image}
+                    alt={selectedArenaModal.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                </div>
+              )}
 
               <div className="uppercase tracking-widest text-white/50 text-xs font-semibold mb-2 font-mono">
                 {selectedArenaModal.category} · Arena #{selectedArenaModal.number}
@@ -210,22 +255,13 @@ export default function ServicesSection() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-2">
+              <div className="flex items-center justify-end pt-2">
                 <button
                   onClick={() => setSelectedArenaModal(null)}
-                  className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-medium rounded-full py-2.5 px-6 text-center text-sm transition-all border border-white/15 cursor-pointer"
+                  className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-medium rounded-full py-2.5 px-8 text-center text-sm transition-all border border-white/15 cursor-pointer"
                 >
                   Close
                 </button>
-                <a
-                  href={REGISTRATION_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto bg-white text-black font-semibold rounded-full py-2.5 px-6 text-center text-sm shadow-md hover:bg-neutral-200 transition-all flex items-center justify-center gap-1.5"
-                >
-                  <span>Register for TechGenio</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
               </div>
             </div>
           </div>

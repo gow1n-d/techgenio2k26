@@ -37,7 +37,7 @@ export default function CtaSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-3xl sm:text-5xl md:text-6xl text-white font-serif tracking-tight mb-4"
           >
-            Ready to Conquer the <em className="italic text-white/80">6 Arenas?</em>
+            Ready to Conquer the <em className="italic text-white/80"> Arenas?</em>
           </motion.h2>
 
           <motion.p

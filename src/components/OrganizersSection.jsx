@@ -146,19 +146,22 @@ export default function OrganizersSection() {
                 <span className="inline-flex items-center gap-1 text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25">
                   <Sparkles className="w-3 h-3" /> Hospitality Note
                 </span>
+                <span className="text-[11px] font-mono text-amber-300/80 bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 rounded-full font-semibold">
+                  09.09.2026 Only
+                </span>
               </div>
               <h4 className="text-white font-bold text-base sm:text-lg tracking-tight">
                 Food and Refreshments will be provided
               </h4>
               <p className="text-white/70 text-xs sm:text-sm mt-0.5">
-                Complimentary lunch and refreshments will be provided for all registered participants and attendees.
+                Complimentary food and refreshments will be provided for all registered participants only on <strong>09.09.2026</strong> (National Engineers' Day Celebration).
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2 text-xs font-mono text-amber-300/90 bg-amber-950/60 border border-amber-500/30 px-4 py-2 rounded-full shrink-0">
             <Coffee className="w-4 h-4 text-amber-400" />
-            <span>Lunch & Refreshments Included</span>
+            <span>Provided Only on 09.09.2026</span>
           </div>
         </motion.div>
       </div>

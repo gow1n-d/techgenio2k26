@@ -18,7 +18,7 @@ export default function EventsSection() {
   return (
     <section id="events" className="py-24 bg-[#0E140E] relative z-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="mb-16">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-800 text-neutral-300 font-mono text-xs font-semibold tracking-wider uppercase mb-4 border border-neutral-700">
               Competitive Arenas
@@ -30,16 +30,6 @@ export default function EventsSection() {
               Explore the five engineering domains tailored for hardware builders, software developers, debuggers, quizmasters, and startup innovators.
             </p>
           </div>
-
-          <a
-            href={CONFIG.REGISTRATION_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-base font-semibold text-emerald-400 underline underline-offset-4 hover:text-emerald-300 transition-colors whitespace-nowrap"
-          >
-            <span>Register for all arenas</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
         </div>
 
         {/* Events Grid */}
@@ -83,15 +73,6 @@ export default function EventsSection() {
                   <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full border border-neutral-600 text-neutral-400 bg-neutral-800/50">
                     {item.stage}
                   </span>
-                  <a
-                    href={CONFIG.REGISTRATION_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 uppercase hover:underline"
-                  >
-                    <span>Register</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
                 </div>
               </div>
             </motion.div>

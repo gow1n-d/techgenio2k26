@@ -27,6 +27,7 @@ export const eventShowcase = [
     description: "Showcase innovative hardware projects, working prototypes, embedded automation systems, robotics, and physical engineering solutions.",
     motif: "Hardware circuit · PCB · Components · Prototype",
     stage: "09 SEP · MAIN DAY EXPO",
+    image: "/techxpo.jpg",
     badgeColor: "bg-amber-400/10 text-amber-300 border-amber-400/30",
     accentColor: "text-amber-400"
   },
@@ -176,7 +177,7 @@ export const institutionalPatrons = [
 ];
 
 export const studentCommittee = [
-  { role: "PRESIDENT", name: "Aravindh N K", designation: "Student Executive President", tag: "Student Committee" },
+  { role: "PRESIDENT", name: "Aravindh NK", designation: "Student Executive President", tag: "Student Committee" },
   { role: "VICE PRESIDENT", name: "Gowind B M", designation: "Student Executive Vice President", tag: "Student Committee" },
   { role: "SECRETARY", name: "Vipinayan P R K", designation: "Student Executive Secretary", tag: "Student Committee" },
   { role: "TREASURER", name: "Nehasri M S & Sindhamani V", designation: "Student Executive Treasurers", tag: "Student Committee" },
