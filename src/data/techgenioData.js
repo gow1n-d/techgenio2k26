@@ -5,16 +5,56 @@
  */
 
 export const REGISTRATION_URL = "https://forms.gle/xCnKSrtyqEJFAXcD8";
+export const INSTAGRAM_URL = "https://www.instagram.com/klnce_irp_official?igsi=MTI2cmNvYW56cjgwaQ==";
+export const INSTAGRAM_HANDLE = "@klnce_irp_official";
+
+export const contactCoordinators = [
+  {
+    role: "Student President",
+    name: "Mr. NK Aravindh",
+    phone: "9345281586",
+    formattedPhone: "+91 93452 81586",
+    badgeColor: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
+    accentColor: "text-emerald-400",
+    glowColor: "hover:border-emerald-500/40",
+    waMessage: "Hi Mr. NK Aravindh, I have a query regarding TechGenio 2K26 registration/events."
+  },
+  {
+    role: "Student Vice President",
+    name: "Mr. B.M. Gowind",
+    phone: "9629088585",
+    formattedPhone: "+91 96290 88585",
+    badgeColor: "bg-cyan-400/10 text-cyan-300 border-cyan-400/30",
+    accentColor: "text-cyan-400",
+    glowColor: "hover:border-cyan-500/40",
+    waMessage: "Hi Mr. B.M. Gowind, I have a query regarding TechGenio 2K26 registration/events."
+  },
+  {
+    role: "Student Secretary",
+    name: "Mr. P.R.K. Vipinayan",
+    phone: "8438634334",
+    formattedPhone: "+91 84386 34334",
+    badgeColor: "bg-amber-400/10 text-amber-300 border-amber-400/30",
+    accentColor: "text-amber-400",
+    glowColor: "hover:border-amber-500/40",
+    waMessage: "Hi Mr. P.R.K. Vipinayan, I have a query regarding TechGenio 2K26 registration/events."
+  }
+];
 
 export const CONFIG = {
   REGISTRATION_URL: "https://forms.gle/xCnKSrtyqEJFAXcD8",
+  INSTAGRAM_URL: "https://www.instagram.com/klnce_irp_official?igsi=MTI2cmNvYW56cjgwaQ==",
+  INSTAGRAM_HANDLE: "@klnce_irp_official",
   EVENT_NAME: "TECHGENIO 2K26",
   EVENT_TYPE: "ENGINEERS' DAY CELEBRATION",
   INSTITUTION: "K.L.N. COLLEGE OF ENGINEERING",
   INSTITUTION_TAGLINE: "An Autonomous Institution | Pottapalayam, Madurai - 630612",
   ORGANIZING_BODIES: "IIC × IRP under QC-IR",
   MAIN_DATE: "09 September 2026",
-  DATE_RANGE: "31 August 2026 – 09 September 2026"
+  DATE_RANGE: "31 August 2026 – 09 September 2026",
+  CONTACT_PHONE_PRESIDENT: "9345281586",
+  CONTACT_PHONE_VICE_PRESIDENT: "9629088585",
+  CONTACT_PHONE_SECRETARY: "8438634334"
 };
 
 export const eventShowcase = [
@@ -182,9 +222,9 @@ export const institutionalPatrons = [
 ];
 
 export const studentCommittee = [
-  { role: "PRESIDENT", name: "Aravindh NK", designation: "Student Executive President", tag: "Student Committee" },
-  { role: "VICE PRESIDENT", name: "Gowind B M", designation: "Student Executive Vice President", tag: "Student Committee" },
-  { role: "SECRETARY", name: "Vipinayan P R K", designation: "Student Executive Secretary", tag: "Student Committee" },
+  { role: "STUDENT PRESIDENT", name: "Mr. NK Aravindh", designation: "Student Executive President", phone: "9345281586", tag: "Student Committee" },
+  { role: "STUDENT VICE PRESIDENT", name: "Mr. B.M. Gowind", designation: "Student Executive Vice President", phone: "9629088585", tag: "Student Committee" },
+  { role: "STUDENT SECRETARY", name: "Mr. P.R.K. Vipinayan", designation: "Student Executive Secretary", phone: "8438634334", tag: "Student Committee" },
   { role: "TREASURER", name: "Nehasri M S & Sindhamani V", designation: "Student Executive Treasurers", tag: "Student Committee" },
   { role: "ORGANIZING COMMITTEE", name: "IRP Aspirants", designation: "Event Organizing Team", tag: "Organizing Body" }
 ];

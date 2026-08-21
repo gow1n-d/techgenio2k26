@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ShieldCheck, Users, Award, Building2, Utensils, Coffee, Sparkles } from 'lucide-react';
+import { ShieldCheck, Users, Award, Building2, Utensils, Coffee, Sparkles, Phone } from 'lucide-react';
 import { institutionalPatrons, studentCommittee } from '../data/techgenioData';
 
 export default function OrganizersSection() {
@@ -119,6 +119,19 @@ export default function OrganizersSection() {
                   <p className="text-white/70 text-sm font-medium">
                     {person.designation}
                   </p>
+
+                  {/* Phone contact if available */}
+                  {person.phone && (
+                    <div className="mt-3">
+                      <a
+                        href={`tel:${person.phone}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-300 hover:text-cyan-200 transition-colors bg-cyan-950/50 border border-cyan-700/40 px-2.5 py-1 rounded-lg"
+                      >
+                        <Phone className="w-3 h-3 text-cyan-400" />
+                        <span>+91 {person.phone}</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-xs text-white/40 font-mono">
