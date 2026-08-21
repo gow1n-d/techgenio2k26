@@ -10,6 +10,7 @@ import TimelineSection from './components/TimelineSection';
 import OrganizersSection from './components/OrganizersSection';
 import CtaSection from './components/CtaSection';
 import CountdownTimer from './components/CountdownTimer';
+import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import { REGISTRATION_URL } from './data/techgenioData';
 
@@ -166,6 +167,9 @@ export default function App() {
 
         {/* SECTION 7 -- CALL TO ACTION */}
         <CtaSection />
+
+        {/* SECTION 8 -- FREQUENTLY ASKED QUESTIONS (FAQ) */}
+        <FaqSection />
 
         {/* FOOTER */}
         <Footer />

@@ -10,7 +10,8 @@ export default function Navbar() {
     { name: "Arenas", href: "#arenas" },
     { name: "Schedule", href: "#schedule" },
     { name: "Philosophy", href: "#philosophy" },
-    { name: "Organizers", href: "#organizers" }
+    { name: "Organizers", href: "#organizers" },
+    { name: "FAQ", href: "#faq" }
   ];
 
   return (

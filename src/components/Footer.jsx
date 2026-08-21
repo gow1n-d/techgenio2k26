@@ -64,6 +64,7 @@ export default function Footer() {
               <li><a href="#schedule" className="text-white/70 hover:text-white transition-colors">Schedule & Timeline</a></li>
               <li><a href="#philosophy" className="text-white/70 hover:text-white transition-colors">Innovation Philosophy</a></li>
               <li><a href="#organizers" className="text-white/70 hover:text-white transition-colors">Patrons & Organizers</a></li>
+              <li><a href="#faq" className="text-white/70 hover:text-white transition-colors">FAQs</a></li>
               <li>
                 <a
                   href={REGISTRATION_URL}
