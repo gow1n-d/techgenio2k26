@@ -27,7 +27,7 @@ export const eventShowcase = [
     description: "Showcase innovative hardware projects, working prototypes, embedded automation systems, robotics, and physical engineering solutions.",
     motif: "Hardware circuit · PCB · Components · Prototype",
     stage: "09 SEP · MAIN DAY EXPO",
-    image: "/techxpo.jpg",
+    image: "/techxpo.png",
     badgeColor: "bg-amber-400/10 text-amber-300 border-amber-400/30",
     accentColor: "text-amber-400"
   },
@@ -40,6 +40,7 @@ export const eventShowcase = [
     description: "A high-octane technology quiz testing knowledge, engineering reasoning, algorithmic logic, and rapid deduction across preliminary and final rounds.",
     motif: "Neural nodes · Data points · Technical trivia",
     stage: "31 AUG (R1) · 07 SEP (R2) · 09 SEP (FINAL)",
+    image: "/neuro-pulse.png",
     badgeColor: "bg-purple-400/10 text-purple-300 border-purple-400/30",
     accentColor: "text-purple-400"
   },
@@ -52,6 +53,7 @@ export const eventShowcase = [
     description: "A multi-stage software development challenge focused on building innovative web, cloud, and algorithmic solutions under sprint conditions.",
     motif: "Code · Terminal · Brackets · Binary logic",
     stage: "02 SEP (R1) · 08 SEP (FINAL)",
+    image: "/code-forge.png",
     badgeColor: "bg-cyan-400/10 text-cyan-300 border-cyan-400/30",
     accentColor: "text-cyan-400"
   },
@@ -64,6 +66,7 @@ export const eventShowcase = [
     description: "A precision debugging competition where participants identify, analyze, and fix logic, concurrency, and syntactic programming errors.",
     motif: "Bug hunter · Error inspection · Code fragments",
     stage: "31 AUG (PRELIMS) · 07 SEP (FINAL)",
+    image: "/bug-verse.png",
     badgeColor: "bg-rose-400/10 text-rose-300 border-rose-400/30",
     accentColor: "text-rose-400"
   },
@@ -76,6 +79,7 @@ export const eventShowcase = [
     description: "Participants present innovative engineering concepts, startup blueprints, and practical solutions convincingly before an expert jury.",
     motif: "Lightbulb · Presentation screen · Startup pitch",
     stage: "01 SEP · FULL DAY SPRINT",
+    image: "/pitchup.png",
     badgeColor: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
     accentColor: "text-emerald-400"
   },
@@ -88,6 +92,7 @@ export const eventShowcase = [
     description: "A collection of quick challenges, engaging activities and fun events happening throughout the main day of TechGenio 2K26.",
     motif: "Spot challenges · Interactive games · Main-day excitement",
     stage: "09 SEP · MAIN DAY SPECIAL",
+    image: "/fun-events.png",
     badgeColor: "bg-indigo-400/10 text-indigo-300 border-indigo-400/30",
     accentColor: "text-indigo-400"
   }

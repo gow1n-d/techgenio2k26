@@ -117,7 +117,7 @@ export const timelineSchedule = [
   },
   {
     date: "2026-09-02",
-    displayDate: "02 SEP 2026",
+    displayDate: "01 SEP 2026",
     dayName: "Wednesday",
     isMainDay: false,
     hasEvent: true,
