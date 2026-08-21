@@ -4,10 +4,10 @@
  * Single source of truth for TechGenio 2K26 Engineers' Day Celebration
  */
 
-export const REGISTRATION_URL = "https://forms.gle/qcKEv7iHQ3k7cxVm7";
+export const REGISTRATION_URL = "https://forms.gle/xCnKSrtyqEJFAXcD8";
 
 export const CONFIG = {
-  REGISTRATION_URL: "https://forms.gle/qcKEv7iHQ3k7cxVm7",
+  REGISTRATION_URL: "https://forms.gle/xCnKSrtyqEJFAXcD8",
   EVENT_NAME: "TECHGENIO 2K26",
   EVENT_TYPE: "ENGINEERS' DAY CELEBRATION",
   INSTITUTION: "K.L.N. COLLEGE OF ENGINEERING",

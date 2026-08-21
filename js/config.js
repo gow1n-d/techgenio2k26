@@ -5,7 +5,7 @@
  */
 
 export const CONFIG = {
-  REGISTRATION_URL: "https://forms.gle/qcKEv7iHQ3k7cxVm7",
+  REGISTRATION_URL: "https://forms.gle/xCnKSrtyqEJFAXcD8",
   
   EVENT: {
     NAME: "TECHGENIO 2K26",
