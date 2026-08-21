@@ -32,7 +32,7 @@ export default function BackgroundVideo() {
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-      {/* Background Video — bright, crisp, full visibility */}
+      {/* Background Video looping smoothly behind the entire site */}
       <video
         ref={videoRef}
         src="/Image_to_Video_Prompt_Animate.mp4"
@@ -41,24 +41,23 @@ export default function BackgroundVideo() {
         loop
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000"
-        style={{ opacity: 1, filter: 'brightness(1.15) saturate(1.2)' }}
+        className="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 opacity-80"
       />
 
-      {/* Floating Animated Ambient Glowing Orbs — more vivid */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-emerald-400/20 blur-3xl animate-pulse pointer-events-none" />
+      {/* Floating Animated Ambient Glowing Orbs */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-emerald-500/15 blur-3xl animate-pulse pointer-events-none" />
       <div
-        className="absolute top-2/3 right-10 w-[30rem] h-[30rem] rounded-full bg-cyan-400/15 blur-3xl animate-pulse pointer-events-none"
+        className="absolute top-2/3 right-10 w-[30rem] h-[30rem] rounded-full bg-cyan-500/15 blur-3xl animate-pulse pointer-events-none"
         style={{ animationDuration: '7s' }}
       />
       <div
-        className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full bg-purple-400/15 blur-3xl animate-pulse pointer-events-none"
+        className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full bg-purple-500/15 blur-3xl animate-pulse pointer-events-none"
         style={{ animationDuration: '9s' }}
       />
 
-      {/* Balanced overlay: video still vivid & visible, white text fully readable */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/38 to-black/58 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_25%,_rgba(0,0,0,0.42)_100%)] pointer-events-none" />
+      {/* Atmospheric dark gradient overlays: preserves video motion while guaranteeing crystal-clear contrast for text and glass containers */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_15%,_rgba(0,0,0,0.65)_100%)] pointer-events-none" />
     </div>
   );
 }
