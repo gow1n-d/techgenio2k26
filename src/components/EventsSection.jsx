@@ -16,14 +16,14 @@ export default function EventsSection() {
   };
 
   return (
-    <section id="events" className="py-24 bg-[#0E140E] relative z-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="events" className="py-16 sm:py-20 md:py-24 bg-[#0E140E] relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-16">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-800 text-neutral-300 font-mono text-xs font-semibold tracking-wider uppercase mb-4 border border-neutral-700">
               Competitive Arenas
             </span>
-            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white mb-4">
               05 Flagship Events
             </h2>
             <p className="text-lg text-neutral-400 font-normal">

@@ -130,7 +130,7 @@ export default function ServicesSection() {
                     setSelectedArenaModal(item);
                   }
                 }}
-                className={`liquid-glass rounded-3xl p-6 sm:p-7 flex flex-col justify-between border border-white/10 ${style.borderHover} ${style.glowBg} transition-all cursor-pointer group shadow-xl relative overflow-hidden h-full min-h-[340px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400`}
+                className={`liquid-glass rounded-3xl p-5 sm:p-6 md:p-7 flex flex-col justify-between border border-white/10 ${style.borderHover} ${style.glowBg} transition-all cursor-pointer group shadow-xl relative overflow-hidden h-full min-h-[280px] sm:min-h-[320px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400`}
               >
                 <div>
                   {/* Top Bar: Icon + Category/Number + Arrow */}
@@ -154,18 +154,7 @@ export default function ServicesSection() {
                     </div>
                   </div>
 
-                  {/* Event Showcase Image */}
-                  {item.image && (
-                    <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-white/25 transition-all shadow-md">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                    </div>
-                  )}
+
 
                   {/* Title & Tagline */}
                   <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-1.5 group-hover:text-white transition-colors">
@@ -201,68 +190,73 @@ export default function ServicesSection() {
         {/* Interactive Arena Details Modal */}
         {selectedArenaModal && (
           <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
             onClick={() => setSelectedArenaModal(null)}
           >
             <div 
-              className="liquid-glass rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-white/20 shadow-2xl relative bg-neutral-950/90 max-h-[90vh] overflow-y-auto my-auto"
+              className="liquid-glass rounded-t-3xl sm:rounded-3xl w-full max-w-lg p-6 sm:p-8 border border-white/20 shadow-2xl relative bg-neutral-950/95 max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button */}
               <button
                 onClick={() => setSelectedArenaModal(null)}
-                className="absolute top-6 right-6 text-white/60 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                className="absolute top-4 right-4 sm:top-5 sm:right-5 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white/70 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 z-10"
                 aria-label="Close modal"
               >
-                ✕
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
 
-              {/* Modal Image */}
-              {selectedArenaModal.image && (
-                <div className="relative w-full h-48 sm:h-52 rounded-2xl overflow-hidden mb-6 border border-white/15 shadow-lg">
-                  <img
-                    src={selectedArenaModal.image}
-                    alt={selectedArenaModal.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                </div>
-              )}
+              {/* Modal Header with Icon */}
+              {(() => {
+                const Icon = arenaIcons[selectedArenaModal.id] || Cpu;
+                const style = arenaColorStyles[selectedArenaModal.id] || arenaColorStyles["techxpo"];
+                return (
+                  <div className="flex items-center gap-3 mb-5 pr-10">
+                    <div className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center shrink-0`}>
+                      <Icon className={`w-6 h-6 ${style.accent}`} />
+                    </div>
+                    <div>
+                      <span className={`text-xs font-mono uppercase tracking-widest font-semibold block ${style.accent}`}>
+                        {selectedArenaModal.category} · Arena #{selectedArenaModal.number}
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
+                        {selectedArenaModal.name}
+                      </h3>
+                    </div>
+                  </div>
+                );
+              })()}
 
-              <div className="uppercase tracking-widest text-white/50 text-xs font-semibold mb-2 font-mono">
-                {selectedArenaModal.category} · Arena #{selectedArenaModal.number}
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                {selectedArenaModal.name}
-              </h3>
-              <p className="text-white/80 font-serif italic text-lg mb-6">
+              <p className="text-white/70 font-serif italic text-base sm:text-lg mb-5 leading-snug">
                 "{selectedArenaModal.tagline}"
               </p>
 
-              <div className="space-y-4 mb-8">
-                <p className="text-white/70 text-sm leading-relaxed">
+              <div className="space-y-4 mb-6">
+                <p className="text-white/65 text-sm leading-relaxed">
                   {selectedArenaModal.description}
                 </p>
 
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2.5">
-                  <div className="flex items-center gap-2.5 text-xs font-mono text-white/80">
-                    <Calendar className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span><strong>Stage:</strong> {selectedArenaModal.stage}</span>
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                  <div className="flex items-start gap-2.5 text-xs font-mono text-white/80">
+                    <Calendar className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong className="text-white/90">Stage:</strong> {selectedArenaModal.stage}</span>
                   </div>
-                  <div className="flex items-center gap-2.5 text-xs font-mono text-white/80">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                    <span><strong>Motif:</strong> {selectedArenaModal.motif}</span>
+                  <div className="flex items-start gap-2.5 text-xs font-mono text-white/80">
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <span><strong className="text-white/90">Motif:</strong> {selectedArenaModal.motif}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center justify-end pt-2">
-                <button
-                  onClick={() => setSelectedArenaModal(null)}
-                  className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-medium rounded-full py-2.5 px-8 text-center text-sm transition-all border border-white/15 cursor-pointer"
-                >
-                  Close
-                </button>
-              </div>
+              <button
+                onClick={() => setSelectedArenaModal(null)}
+                className="w-full bg-white/10 hover:bg-white/20 text-white font-medium rounded-2xl py-3 px-8 text-center text-sm transition-all border border-white/15 cursor-pointer active:scale-95"
+              >
+                Close
+              </button>
             </div>
           </div>
         )}

@@ -7,8 +7,8 @@ export default function ScheduleSection() {
   const currentSlot = timelineData[activeTab];
 
   return (
-    <section id="schedule" className="py-24 bg-[#0E140E] relative z-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="schedule" className="py-16 sm:py-20 md:py-24 bg-[#0E140E] relative z-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-800 text-neutral-300 font-mono text-xs font-semibold tracking-wider uppercase mb-4 border border-neutral-700">
             Interactive Matrix
@@ -22,7 +22,7 @@ export default function ScheduleSection() {
         </div>
 
         {/* Date Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-thin">
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 -mx-4 sm:mx-0 px-4 sm:px-0 scrollbar-none" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
           {timelineData.map((slot, idx) => (
             <button
               key={slot.date}
