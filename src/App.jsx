@@ -9,6 +9,7 @@ import ServicesSection from './components/ServicesSection';
 import TimelineSection from './components/TimelineSection';
 import OrganizersSection from './components/OrganizersSection';
 import CtaSection from './components/CtaSection';
+import CountdownTimer from './components/CountdownTimer';
 import Footer from './components/Footer';
 import { REGISTRATION_URL } from './data/techgenioData';
 
@@ -142,6 +143,9 @@ export default function App() {
                 <ArrowDown className="w-4 h-4 opacity-75" />
               </a>
             </motion.div>
+
+            {/* Countdown Timer to 27th August 11:59 PM */}
+            <CountdownTimer />
           </div>
         </section>
 
