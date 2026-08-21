@@ -61,9 +61,9 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li><a href="#about" className="text-white/70 hover:text-white transition-colors">About TechGenio</a></li>
               <li><a href="#arenas" className="text-white/70 hover:text-white transition-colors">6 Flagship Arenas</a></li>
-              <li><a href="#schedule" className="text-white/70 hover:text-white transition-colors">Schedule & Timeline</a></li>
+              <li><a href="#schedule" className="text-white/70 hover:text-white transition-colors">Schedule &amp; Timeline</a></li>
               <li><a href="#philosophy" className="text-white/70 hover:text-white transition-colors">Innovation Philosophy</a></li>
-              <li><a href="#organizers" className="text-white/70 hover:text-white transition-colors">Patrons & Organizers</a></li>
+              <li><a href="#organizers" className="text-white/70 hover:text-white transition-colors">Patrons &amp; Organizers</a></li>
               <li><a href="#faq" className="text-white/70 hover:text-white transition-colors">FAQs</a></li>
               <li>
                 <a
