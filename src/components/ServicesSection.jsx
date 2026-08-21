@@ -154,7 +154,18 @@ export default function ServicesSection() {
                     </div>
                   </div>
 
-
+                  {/* Event Showcase Image on Card */}
+                  {item.image && (
+                    <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-white/25 transition-all shadow-md">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    </div>
+                  )}
 
                   {/* Title & Tagline */}
                   <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-1.5 group-hover:text-white transition-colors">
