@@ -23,10 +23,10 @@ export const eventsShowcase = [
     number: "02",
     name: "NEURO PULSE",
     category: "Technical Quiz",
-    tagline: "Battle of Technical Acumen & Quick Thinking",
-    description: "A high-octane technology-focused quiz testing knowledge, technical awareness, engineering reasoning, algorithmic logic, and rapid problem-solving speed.",
+    tagline: "Neural Ignition · Mind Matrix · Neuro Nexus",
+    description: "A high-octane 3-tier technology quiz testing aptitude, visual memory, logical deduction, and collaborative technical acumen.",
     icon: "zap",
-    visualMotif: "Neural nodes · Brain · Data points · Technical trivia",
+    visualMotif: "Neural Ignition · Mind Matrix · Neuro Nexus",
     statusBadge: "3-STAGE CHALLENGE",
     scheduleNote: "31 AUG (R1) · 07 SEP (R2) · 09 SEP (Final)",
     color: "#A66CFF"
@@ -36,12 +36,12 @@ export const eventsShowcase = [
     number: "03",
     name: "CODE FORGE",
     category: "Software Hackathon",
-    tagline: "Sprint Development & Architecture Arena",
-    description: "A multi-stage software development challenge focused on building innovative technology solutions, web/cloud applications, and algorithmic prototypes under time constraints.",
+    tagline: "Code Clash (R1) · Signal Lost (R2 Final)",
+    description: "A premier 2-stage software development challenge: Round 1 'CODE CLASH' (Bid. Risk. Code. Win.) & Round 2 'SIGNAL LOST' (Afternoon 3-member team communication & development arena).",
     icon: "code",
     visualMotif: "Code · Terminal · Brackets · Digital grid · Binary logic",
     statusBadge: "2-STAGE SPRINT",
-    scheduleNote: "02 SEP (Round 1) · 08 SEP (Final)",
+    scheduleNote: "01 SEP (Round 1) · 08 SEP (Afternoon Final)",
     color: "#5CE1E6"
   },
   {
@@ -49,12 +49,12 @@ export const eventsShowcase = [
     number: "04",
     name: "BUG VERSE",
     category: "Code Debugging",
-    tagline: "Forensic Analysis & Syntax Rectification",
-    description: "A precision debugging competition where participants identify, analyze, and fix logic, memory, algorithmic, and syntactic programming errors under timed conditions.",
+    tagline: "Think. Debug. Fix. Win!",
+    description: "BugVerse is an exciting coding challenge that tests your programming knowledge, logical thinking, and debugging skills. The best debugger will be crowned the BugVerse Winner!",
     icon: "terminal",
-    visualMotif: "Bug hunter · Error inspection · Terminal · Code fragments",
+    visualMotif: "30 Questions (C/Java/Python) · 10 Error Programs",
     statusBadge: "2-STAGE ARENA",
-    scheduleNote: "31 AUG (Prelims) · 07 SEP (Final)",
+    scheduleNote: "31 AUG (Prelims) · 07 SEP (Half-Day Final)",
     color: "#FF5C7A"
   },
   {
@@ -67,7 +67,7 @@ export const eventsShowcase = [
     icon: "lightbulb",
     visualMotif: "Lightbulb · Presentation screen · Idea nodes · Startup pitch",
     statusBadge: "FULL DAY SPRINT",
-    scheduleNote: "01 SEP 2026 (Full Day)",
+    scheduleNote: "02 SEP 2026 (Full Day)",
     color: "#FFB020"
   }
 ];
@@ -81,20 +81,20 @@ export const timelineSchedule = [
     hasEvent: true,
     events: [
       {
-        name: "QUIZ",
+        name: "QUIZ: NEURAL IGNITION",
         eventCode: "neuro-pulse",
-        stage: "Round 1",
+        stage: "Round 1 (Qualifier)",
         duration: "FN (Forenoon)",
         badgeType: "round1",
-        description: "Preliminary screening round evaluating core technology concepts and speed reasoning."
+        description: "Aptitude, basic technical, and logical reasoning questions to screen and seed top quiz teams."
       },
       {
-        name: "CODE DEBUGGING",
+        name: "BUGVERSE: PROGRAMMING CHALLENGE",
         eventCode: "bug-verse",
-        stage: "Prelims",
+        stage: "Round 1",
         duration: "FN (Forenoon)",
         badgeType: "prelims",
-        description: "Round 1 debugging trial across C/C++, Java, and Python codebases."
+        description: "30 questions covering C, Java, and Python, including MCQs, Fill in the Blanks, and Error Identification."
       }
     ]
   },
@@ -204,20 +204,20 @@ export const timelineSchedule = [
     hasEvent: true,
     events: [
       {
-        name: "CODE DEBUGGING (Bug Verse)",
+        name: "BUGVERSE: DEBUGGING CHALLENGE",
         eventCode: "bug-verse",
-        stage: "FINAL",
+        stage: "Round 2 (Final)",
         duration: "Half Day",
         badgeType: "final",
-        description: "High-stakes final debugging round resolving complex algorithmic concurrency bugs."
+        description: "Qualifiers log in to the provided website and debug 10 error-filled programs within the given time. Think. Debug. Fix. Win!"
       },
       {
-        name: "QUIZ (Neuro Pulse)",
+        name: "QUIZ: MIND MATRIX",
         eventCode: "neuro-pulse",
-        stage: "Round 2",
+        stage: "Round 2 (Eliminator)",
         duration: "Half Day",
         badgeType: "round2",
-        description: "Semi-final speed buzzer round and advanced engineering trivia."
+        description: "Picture-based round testing visual memory, tech/circuit identification, and rapid deduction under time pressure."
       }
     ]
   },
@@ -247,7 +247,7 @@ export const timelineSchedule = [
     isAlternative: true,
     events: [
       {
-        name: "HARDWARE",
+        name: "HARDWARE (TechXpo)",
         subName: "Project Expo",
         eventCode: "techxpo",
         stage: "MAIN DAY EXPO",
@@ -256,13 +256,13 @@ export const timelineSchedule = [
         description: "Grand exhibition of physical engineering hardware prototypes, IoT devices, robotics, and embedded innovations."
       },
       {
-        name: "QUIZ",
-        subName: "Final Round",
+        name: "QUIZ: NEURO NEXUS",
+        subName: "Final Championship Round",
         eventCode: "neuro-pulse",
         stage: "GRAND FINALE",
         duration: "Championship Stage",
         badgeType: "mainday",
-        description: "Top qualifying teams battle on the auditorium stage for the championship trophy and honors."
+        description: "High-stakes final team-based technical quiz championship conducted live on the main celebration stage."
       }
     ]
   }

@@ -76,10 +76,27 @@ export const eventShowcase = [
     number: "02",
     name: "NEURO PULSE",
     category: "Technical Quiz",
-    tagline: "Battle of Technical Acumen & Quick Thinking",
-    description: "A high-octane technology quiz testing knowledge, engineering reasoning, algorithmic logic, and rapid deduction across preliminary and final rounds.",
-    motif: "Neural nodes · Data points · Technical trivia",
+    tagline: "Neural Ignition · Mind Matrix · Neuro Nexus",
+    description: "A high-octane 3-tier technology quiz testing aptitude, visual memory, logical deduction, and collaborative technical acumen.",
+    motif: "Neural Ignition · Mind Matrix · Neuro Nexus",
     stage: "31 AUG (R1) · 07 SEP (R2) · 09 SEP (FINAL)",
+    rounds: [
+      {
+        round: "Round 1 (Qualifier) · 31 August 2026",
+        title: "Qualifier: Neural Ignition",
+        desc: "Aptitude, basic technical, and logical reasoning questions to screen and seed top quiz teams."
+      },
+      {
+        round: "Round 2 (Eliminator) · 07 September 2026 (Half Day)",
+        title: "Eliminator: Mind Matrix",
+        desc: "Picture-based round testing visual memory, tech/circuit identification, and rapid reasoning under time pressure."
+      },
+      {
+        round: "Round 3 (Final) · 09 September 2026 (Main Day)",
+        title: "Final: Neuro Nexus",
+        desc: "Grand team-based technical quiz championship conducted live on the main celebration stage."
+      }
+    ],
     image: "/neuro-pulse.png",
     badgeColor: "bg-purple-400/10 text-purple-300 border-purple-400/30",
     accentColor: "text-purple-400"
@@ -114,10 +131,22 @@ export const eventShowcase = [
     number: "04",
     name: "BUG VERSE",
     category: "Code Debugging",
-    tagline: "Forensic Analysis & Syntax Rectification",
-    description: "A precision debugging competition where participants identify, analyze, and fix logic, concurrency, and syntactic programming errors.",
-    motif: "Bug hunter · Error inspection · Code fragments",
+    tagline: "Think. Debug. Fix. Win!",
+    description: "BugVerse is an exciting coding challenge that tests your programming knowledge, logical thinking, and debugging skills. The best debugger will be crowned the BugVerse Winner!",
+    motif: "30 Questions (C/Java/Python) · 10 Error Programs",
     stage: "31 AUG (PRELIMS) · 07 SEP (FINAL)",
+    rounds: [
+      {
+        round: "Round 1 · 31 August 2026",
+        title: "Round 1: Programming Challenge",
+        desc: "30 questions covering C, Java, and Python, including MCQs, Fill in the Blanks, and Error Identification."
+      },
+      {
+        round: "Round 2 · 07 September 2026 (Half Day)",
+        title: "Round 2: Debugging Challenge (Final)",
+        desc: "Qualifiers log in to the provided website and debug 10 error-filled programs within the given time. Think. Debug. Fix. Win!"
+      }
+    ],
     image: "/bug-verse.png",
     badgeColor: "bg-rose-400/10 text-rose-300 border-rose-400/30",
     accentColor: "text-rose-400"
@@ -157,8 +186,16 @@ export const timelineData = [
     badge: "PRELIMS",
     badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
     events: [
-      { name: "QUIZ (Neuro Pulse)", stage: "Round 1 · FN", desc: "Forenoon preliminary screening round testing technical acumen and speed logic." },
-      { name: "CODE DEBUGGING (Bug Verse)", stage: "Prelims · FN", desc: "Round 1 syntax error detection and logic fault-finding trial." }
+      { 
+        name: "QUIZ: NEURAL IGNITION (Round 1 Qualifier)", 
+        stage: "Round 1 · FN", 
+        desc: "Aptitude, basic technical, and logical reasoning questions to screen and seed top quiz teams." 
+      },
+      { 
+        name: "BUGVERSE: PROGRAMMING CHALLENGE (Round 1)", 
+        stage: "Prelims · FN", 
+        desc: "30 questions covering C, Java, and Python (MCQs, Fill in the Blanks, and Error Identification)." 
+      }
     ]
   },
   {
@@ -202,8 +239,16 @@ export const timelineData = [
     badge: "FINALS SPRINT",
     badgeColor: "bg-purple-100 text-purple-800 border-purple-200",
     events: [
-      { name: "CODE DEBUGGING (Bug Verse)", stage: "FINAL · Half Day", desc: "High-stakes final debugging round resolving complex algorithmic concurrency bugs." },
-      { name: "QUIZ (Neuro Pulse)", stage: "Round 2 · Half Day", desc: "Semi-final speed buzzer round and advanced engineering trivia." }
+      { 
+        name: "BUGVERSE: DEBUGGING CHALLENGE (Round 2 Final)", 
+        stage: "FINAL · Half Day", 
+        desc: "Qualifiers log in to the provided platform and debug 10 error-filled programs within the given time limit. Think. Debug. Fix. Win!" 
+      },
+      { 
+        name: "QUIZ: MIND MATRIX (Round 2 Eliminator)", 
+        stage: "Round 2 · Half Day", 
+        desc: "Picture-based round testing visual memory, tech/circuit identification, and rapid deduction under time pressure." 
+      }
     ]
   },
   {
@@ -227,7 +272,7 @@ export const timelineData = [
     isMainDay: true,
     events: [
       { name: "HARDWARE (TechXpo)", stage: "Project Expo · Full Day", desc: "Grand exhibition of physical engineering hardware prototypes, IoT systems, and robotics." },
-      { name: "QUIZ (Neuro Pulse)", stage: "Grand Finale", desc: "Championship stage round conducted before the Engineers' Day assembly (Alternative Track)." },
+      { name: "QUIZ: NEURO NEXUS (Grand Championship Finale)", stage: "Grand Finale", desc: "High-stakes final team-based technical quiz championship conducted live on the main celebration stage." },
       { name: "MULTIPLE FUN EVENTS", stage: "Throughout Main Day", desc: "Engaging quick-fire challenges, interactive tech games, and main-day special activities." }
     ]
   }
