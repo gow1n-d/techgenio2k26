@@ -4,6 +4,13 @@
  * Single source of truth for TechGenio 2K26 Engineers' Day Celebration
  */
 
+import neuroPulseBrochure from '../assets/brochures/neuro-pulse-brochure.jpeg';
+import funEventsBrochure from '../assets/brochures/fun-events-brochure.jpeg';
+import pitchupBrochure from '../assets/brochures/pitchup-brochure.jpeg';
+import bugVerseBrochure from '../assets/brochures/bug-verse-brochure.jpeg';
+import codeForgeBrochure from '../assets/brochures/code-forge-brochure.jpeg';
+import techxpoBrochure from '../assets/brochures/techxpo-brochure.jpeg';
+
 export const REGISTRATION_URL = "https://forms.gle/xCnKSrtyqEJFAXcD8";
 export const INSTAGRAM_URL = "https://www.instagram.com/klnce_irp_official?igsi=MTI2cmNvYW56cjgwaQ==";
 export const INSTAGRAM_HANDLE = "@klnce_irp_official";
@@ -68,6 +75,7 @@ export const eventShowcase = [
     motif: "Hardware circuit · PCB · Components · Prototype",
     stage: "09 SEP · MAIN DAY EXPO",
     image: "/techxpo.png",
+    brochure: techxpoBrochure,
     badgeColor: "bg-amber-400/10 text-amber-300 border-amber-400/30",
     accentColor: "text-amber-400"
   },
@@ -80,6 +88,7 @@ export const eventShowcase = [
     description: "A high-octane 3-tier technology quiz testing aptitude, visual memory, logical deduction, and collaborative technical acumen.",
     motif: "Neural Ignition · Mind Matrix · Neuro Nexus",
     stage: "31 AUG (R1) · 07 SEP (R2) · 09 SEP (FINAL)",
+    brochure: neuroPulseBrochure,
     rounds: [
       {
         round: "Round 1 (Qualifier) · 31 August 2026",
@@ -110,6 +119,7 @@ export const eventShowcase = [
     description: "A premier 2-stage software development challenge: Round 1 'CODE CLASH' (Bid. Risk. Code. Win.) & Round 2 'SIGNAL LOST' (Afternoon 3-member team communication & development arena).",
     motif: "TechCoins bidding · Team architecture · Signal deduction",
     stage: "01 SEP (R1) · 08 SEP (R2 · AFTERNOON)",
+    brochure: codeForgeBrochure,
     rounds: [
       {
         round: "Round 1 · 01 September 2026",
@@ -135,6 +145,7 @@ export const eventShowcase = [
     description: "BugVerse is an exciting coding challenge that tests your programming knowledge, logical thinking, and debugging skills. The best debugger will be crowned the BugVerse Winner!",
     motif: "30 Questions (C/Java/Python) · 10 Error Programs",
     stage: "31 AUG (PRELIMS) · 07 SEP (FINAL)",
+    brochure: bugVerseBrochure,
     rounds: [
       {
         round: "Round 1 · 31 August 2026",
@@ -160,6 +171,7 @@ export const eventShowcase = [
     description: "Participants present innovative engineering concepts, startup blueprints, and practical solutions convincingly before an expert jury.",
     motif: "Lightbulb · Presentation screen · Startup pitch",
     stage: "02 SEP · FULL DAY SPRINT",
+    brochure: pitchupBrochure,
     image: "/pitchup.png",
     badgeColor: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
     accentColor: "text-emerald-400"
@@ -173,6 +185,7 @@ export const eventShowcase = [
     description: "A collection of quick challenges, engaging activities and fun events happening throughout the main day of TechGenio 2K26.",
     motif: "Spot challenges · Interactive games · Main-day excitement",
     stage: "09 SEP · MAIN DAY SPECIAL",
+    brochure: funEventsBrochure,
     image: "/fun-events.png",
     badgeColor: "bg-indigo-400/10 text-indigo-300 border-indigo-400/30",
     accentColor: "text-indigo-400"

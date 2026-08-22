@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { ArrowUpRight, Cpu, HelpCircle, Code, Bug, Lightbulb, Sparkles, Calendar, CheckCircle2 } from 'lucide-react';
-import { eventShowcase } from '../data/techgenioData';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { ArrowUpRight, Cpu, HelpCircle, Code, Bug, Lightbulb, Sparkles, X, ExternalLink } from 'lucide-react';
+import { eventShowcase, REGISTRATION_URL } from '../data/techgenioData';
 
 export default function ServicesSection() {
   const containerRef = useRef(null);
@@ -187,7 +187,7 @@ export default function ServicesSection() {
                     {item.stage}
                   </span>
                   <span className="text-[11px] text-white/40 font-mono group-hover:text-white/70 transition-colors flex items-center gap-1">
-                    Details <ArrowUpRight className="w-3 h-3 inline" />
+                    View Brochure <ArrowUpRight className="w-3 h-3 inline" />
                   </span>
                 </div>
               </motion.div>
@@ -195,97 +195,116 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* Interactive Arena Details Modal */}
-        {selectedArenaModal && (
-          <div 
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
-            onClick={() => setSelectedArenaModal(null)}
-          >
-            <div 
-              className="liquid-glass rounded-t-3xl sm:rounded-3xl w-full max-w-lg p-6 sm:p-8 border border-white/20 shadow-2xl relative bg-neutral-950/95 max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
+        {/* Interactive Arena Details Brochure Modal */}
+        <AnimatePresence>
+          {selectedArenaModal && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/85 backdrop-blur-md"
+              onClick={() => setSelectedArenaModal(null)}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedArenaModal(null)}
-                className="absolute top-4 right-4 sm:top-5 sm:right-5 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white/70 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 z-10"
-                aria-label="Close modal"
+              <motion.div 
+                initial={{ scale: 0.94, opacity: 0, y: 15 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.94, opacity: 0, y: 15 }}
+                transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
+                className="liquid-glass rounded-3xl w-full max-w-2xl border border-white/20 shadow-2xl relative bg-neutral-950/95 max-h-[92vh] flex flex-col overflow-hidden"
+                onClick={(e) => e.stopPropagation()}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-
-              {/* Modal Header with Icon */}
-              {(() => {
-                const Icon = arenaIcons[selectedArenaModal.id] || Cpu;
-                const style = arenaColorStyles[selectedArenaModal.id] || arenaColorStyles["techxpo"];
-                return (
-                  <div className="flex items-center gap-3.5 mb-5 pr-10">
-                    <div className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center shrink-0`}>
-                      <Icon className={`w-6 h-6 ${style.accent}`} />
-                    </div>
-                    <div>
-                      <span className={`text-[11px] font-mono uppercase tracking-widest font-semibold block ${style.accent}`}>
-                        {selectedArenaModal.category} · Arena #{selectedArenaModal.number}
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
-                        {selectedArenaModal.name}
-                      </h3>
-                    </div>
-                  </div>
-                );
-              })()}
-
-              <p className="text-white/75 font-serif italic text-sm sm:text-base mb-4 leading-relaxed">
-                "{selectedArenaModal.tagline}"
-              </p>
-
-              <div className="space-y-4 mb-6">
-                <p className="text-white/70 text-sm leading-relaxed">
-                  {selectedArenaModal.description}
-                </p>
-
-                {/* Structured Rounds breakdown (if available) */}
-                {selectedArenaModal.rounds ? (
-                  <div className="space-y-2.5 pt-2">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 font-bold mb-1">
-                      Event Schedule &amp; Round Breakdown
-                    </div>
-                    {selectedArenaModal.rounds.map((r, rIdx) => (
-                      <div key={rIdx} className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 space-y-1 hover:border-white/20 transition-all">
-                        <div className="flex items-center justify-between gap-2 flex-wrap">
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">
-                            {r.round}
-                          </span>
+                {/* Modal Header */}
+                {(() => {
+                  const Icon = arenaIcons[selectedArenaModal.id] || Cpu;
+                  const style = arenaColorStyles[selectedArenaModal.id] || arenaColorStyles["techxpo"];
+                  return (
+                    <div className="flex items-center justify-between gap-3 p-4 sm:p-5 border-b border-white/10 shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center shrink-0">
+                          <Icon className={`w-5 h-5 ${style.accent}`} />
                         </div>
-                        <h4 className="text-sm font-bold text-white tracking-tight mt-1">
-                          {r.title}
-                        </h4>
-                        <p className="text-xs text-white/70 leading-relaxed">
-                          {r.desc}
-                        </p>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className={`text-[10px] sm:text-xs font-mono uppercase tracking-widest font-semibold ${style.accent}`}>
+                              {selectedArenaModal.category} · Arena #{selectedArenaModal.number}
+                            </span>
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-neutral-700 bg-neutral-800/80 text-neutral-300">
+                              {selectedArenaModal.stage}
+                            </span>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
+                            {selectedArenaModal.name}
+                          </h3>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2.5 text-xs font-mono text-white/80 pt-2">
-                    <Calendar className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span><strong className="text-white/90">Stage:</strong> {selectedArenaModal.stage}</span>
-                  </div>
-                )}
-              </div>
 
-              <button
-                onClick={() => setSelectedArenaModal(null)}
-                className="w-full bg-white/10 hover:bg-white/20 text-white font-medium rounded-2xl py-3 px-8 text-center text-sm transition-all border border-white/15 cursor-pointer active:scale-95"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+                      {/* Close Button */}
+                      <button
+                        onClick={() => setSelectedArenaModal(null)}
+                        className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white/70 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 shrink-0"
+                        aria-label="Close modal"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  );
+                })()}
+
+                {/* Brochure Image Display Area (Texts removed as requested) */}
+                <div className="flex-1 overflow-y-auto p-3 sm:p-4 bg-black/40 flex items-center justify-center">
+                  {selectedArenaModal.brochure ? (
+                    <div className="relative w-full max-h-[65vh] flex items-center justify-center overflow-auto rounded-2xl border border-white/10 bg-neutral-900/50 shadow-inner">
+                      <img
+                        src={selectedArenaModal.brochure}
+                        alt={`${selectedArenaModal.name} Event Brochure`}
+                        className="w-auto h-auto max-h-[65vh] max-w-full object-contain rounded-xl shadow-2xl"
+                        loading="eager"
+                      />
+                    </div>
+                  ) : (
+                    <div className="p-12 text-center text-white/50 text-sm font-mono">
+                      Brochure image not available
+                    </div>
+                  )}
+                </div>
+
+                {/* Modal Footer Actions */}
+                <div className="p-3 sm:p-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0 bg-neutral-950">
+                  {selectedArenaModal.brochure ? (
+                    <a
+                      href={selectedArenaModal.brochure}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto text-xs font-mono text-white/80 hover:text-white flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Open Full Size Brochure</span>
+                    </a>
+                  ) : <div />}
+
+                  <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                    <a
+                      href={REGISTRATION_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto px-5 py-2 rounded-xl bg-white text-black font-semibold text-xs sm:text-sm hover:bg-neutral-200 transition-all active:scale-95 shadow-md flex items-center justify-center gap-1.5"
+                    >
+                      <span>Register Now</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </a>
+                    <button
+                      onClick={() => setSelectedArenaModal(null)}
+                      className="w-full sm:w-auto px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm transition-all border border-white/15 cursor-pointer active:scale-95"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
