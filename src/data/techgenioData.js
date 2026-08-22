@@ -202,7 +202,7 @@ export const timelineData = [
     badge: "FINALS SPRINT",
     badgeColor: "bg-purple-100 text-purple-800 border-purple-200",
     events: [
-      { name: "CODE DEBUGGING (Bug Verse)", stage: "FINAL · Full Day", desc: "High-stakes final debugging round resolving complex algorithmic concurrency bugs." },
+      { name: "CODE DEBUGGING (Bug Verse)", stage: "FINAL · Half Day", desc: "High-stakes final debugging round resolving complex algorithmic concurrency bugs." },
       { name: "QUIZ (Neuro Pulse)", stage: "Round 2 · Half Day", desc: "Semi-final speed buzzer round and advanced engineering trivia." }
     ]
   },

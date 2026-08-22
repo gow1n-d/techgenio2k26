@@ -106,29 +106,29 @@ export const timelineSchedule = [
     hasEvent: true,
     events: [
       {
-        name: "IDEA PITCHING",
-        eventCode: "pitchup",
-        stage: "Full Sprint",
-        duration: "Full Day",
-        badgeType: "fullday",
-        description: "Presentation of innovative hardware/software solutions and prototype blueprints before the jury."
+        name: "SOFTWARE HACKATHON: CODE CLASH",
+        eventCode: "code-forge",
+        stage: "Round 1",
+        duration: "Round 1 · 01 SEP",
+        badgeType: "round1",
+        description: "A high-stakes team coding challenge where teams bid TechCoins for unseen problems and race to solve them within the time limit. Bid smart, code fast, manage the risk, and win."
       }
     ]
   },
   {
     date: "2026-09-02",
-    displayDate: "01 SEP 2026",
+    displayDate: "02 SEP 2026",
     dayName: "Wednesday",
     isMainDay: false,
     hasEvent: true,
     events: [
       {
-        name: "SOFTWARE HACKATHON",
-        eventCode: "code-forge",
-        stage: "Round 1",
-        duration: "Half Day",
-        badgeType: "round1",
-        description: "Phase 1 architecture blueprinting, repo initialization, and core feature prototyping."
+        name: "IDEA PITCHING (PitchUp)",
+        eventCode: "pitchup",
+        stage: "Full Sprint",
+        duration: "Full Day",
+        badgeType: "fullday",
+        description: "Presentation of innovative project blueprints, startup concepts, and prototypes before jury."
       }
     ]
   },
@@ -204,20 +204,20 @@ export const timelineSchedule = [
     hasEvent: true,
     events: [
       {
-        name: "CODE DEBUGGING",
+        name: "CODE DEBUGGING (Bug Verse)",
         eventCode: "bug-verse",
         stage: "FINAL",
-        duration: "Full Day",
+        duration: "Half Day",
         badgeType: "final",
-        description: "High-pressure finals with complex asynchronous race conditions, memory leaks, and logic faults."
+        description: "High-stakes final debugging round resolving complex algorithmic concurrency bugs."
       },
       {
-        name: "QUIZ",
+        name: "QUIZ (Neuro Pulse)",
         eventCode: "neuro-pulse",
         stage: "Round 2",
         duration: "Half Day",
         badgeType: "round2",
-        description: "Semi-final round with audiovisual clues, circuit analysis, and rapid-fire buzzers."
+        description: "Semi-final speed buzzer round and advanced engineering trivia."
       }
     ]
   },
@@ -229,12 +229,12 @@ export const timelineSchedule = [
     hasEvent: true,
     events: [
       {
-        name: "SOFTWARE HACKATHON",
+        name: "SOFTWARE HACKATHON: SIGNAL LOST",
         eventCode: "code-forge",
         stage: "FINAL",
-        duration: "Full Day",
+        duration: "Afternoon Session / Half-Day",
         badgeType: "final",
-        description: "Final 24h sprint deployment, live application hosting, code quality audit, and jury showcase."
+        description: "A 3-member team challenge where communication, development, and testing determine how accurately the team can turn an incomplete understanding into the right solution."
       }
     ]
   },
