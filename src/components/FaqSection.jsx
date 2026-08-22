@@ -38,16 +38,6 @@ const faqsData = [
   },
   {
     id: 4,
-    category: "schedule",
-    question: "Can I participate in both Quiz and Hardware Expo?",
-    answer: (
-      <span>
-        No. <strong className="text-white">Quiz and Hardware Expo will be conducted simultaneously</strong> on the main day, so participants must choose prudently between them.
-      </span>
-    )
-  },
-  {
-    id: 5,
     category: "eligibility",
     question: "Can I participate as a solo participant?",
     answer: (
@@ -57,7 +47,7 @@ const faqsData = [
     )
   },
   {
-    id: 6,
+    id: 5,
     category: "schedule",
     question: "When will the preliminary rounds be conducted?",
     answer: (
@@ -67,17 +57,17 @@ const faqsData = [
     )
   },
   {
-    id: 7,
+    id: 6,
     category: "schedule",
     question: "When is the main event?",
     answer: (
       <span>
-        The TECHGENIO 2K26 grand finale celebration will be held on <strong className="text-amber-400">9 September 2026</strong> (National Engineers' Day).
+        The TECHGENIO 2K26 grand finale celebration will be held on <strong className="text-amber-400">9 September 2026</strong> (celebrating National Engineers' Day).
       </span>
     )
   },
   {
-    id: 8,
+    id: 7,
     category: "schedule",
     question: "Are there any fun events?",
     answer: (
@@ -87,7 +77,7 @@ const faqsData = [
     )
   },
   {
-    id: 9,
+    id: 8,
     category: "registration",
     question: "How will I receive event updates and instructions?",
     answer: (
@@ -97,13 +87,13 @@ const faqsData = [
     )
   },
   {
-    id: 10,
+    id: 9,
     category: "registration",
     question: "Can I change my selected events after registration?",
     answer: "Participants are strongly advised to choose their events carefully before submitting the registration form. Any change requests after submission will be subject to organizer approval."
   },
   {
-    id: 11,
+    id: 10,
     category: "schedule",
     question: "Where will TECHGENIO 2K26 be conducted?",
     answer: (
@@ -113,7 +103,7 @@ const faqsData = [
     )
   },
   {
-    id: 12,
+    id: 11,
     category: "registration",
     question: "Whom should I contact if I have any queries?",
     answer: "You can contact the TECHGENIO organizing committee through the official contact numbers provided on the website or directly via the official WhatsApp group."
