@@ -42,12 +42,16 @@ export default function EventsSection() {
             >
               {/* Event Image */}
               {item.image && (
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="relative h-48 overflow-hidden bg-neutral-950">
+                  <picture>
+                    <source srcSet={item.image.replace('.png', '.webp')} type="image/webp" />
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </picture>
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#141A14] via-[#141A14]/30 to-transparent" />
 

@@ -156,13 +156,16 @@ export default function ServicesSection() {
 
                   {/* Event Showcase Image on Card */}
                   {item.image && (
-                    <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-white/25 transition-all shadow-md">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
+                    <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-white/25 transition-all shadow-md bg-neutral-950">
+                      <picture>
+                        <source srcSet={item.image.replace('.png', '.webp')} type="image/webp" />
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      </picture>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                     </div>
                   )}
@@ -249,6 +252,30 @@ export default function ServicesSection() {
                 <p className="text-white/65 text-sm leading-relaxed">
                   {selectedArenaModal.description}
                 </p>
+
+                {/* Structured Rounds breakdown (if available) */}
+                {selectedArenaModal.rounds && (
+                  <div className="space-y-3 pt-1">
+                    <div className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
+                      Round Structure &amp; Schedule
+                    </div>
+                    {selectedArenaModal.rounds.map((r, rIdx) => (
+                      <div key={rIdx} className="p-3.5 rounded-xl bg-cyan-950/20 border border-cyan-500/20 space-y-1">
+                        <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">
+                            {r.round}
+                          </span>
+                        </div>
+                        <h4 className="text-sm font-bold text-white tracking-tight mt-1">
+                          {r.title}
+                        </h4>
+                        <p className="text-xs text-white/70 leading-relaxed">
+                          {r.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
                   <div className="flex items-start gap-2.5 text-xs font-mono text-white/80">

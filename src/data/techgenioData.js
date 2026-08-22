@@ -89,10 +89,22 @@ export const eventShowcase = [
     number: "03",
     name: "CODE FORGE",
     category: "Software Hackathon",
-    tagline: "Sprint Development & Architecture Arena",
-    description: "A multi-stage software development challenge focused on building innovative web, cloud, and algorithmic solutions under sprint conditions.",
-    motif: "Code · Terminal · Brackets · Binary logic",
-    stage: "02 SEP (R1) · 08 SEP (FINAL)",
+    tagline: "Code Clash (R1) · Signal Lost (R2 Final)",
+    description: "A premier 2-stage software development challenge: Round 1 'CODE CLASH' (Bid. Risk. Code. Win.) & Round 2 'SIGNAL LOST' (Afternoon 3-member team communication & development arena).",
+    motif: "TechCoins bidding · Team architecture · Signal deduction",
+    stage: "01 SEP (R1) · 08 SEP (R2 · AFTERNOON)",
+    rounds: [
+      {
+        round: "Round 1 · 01 September 2026",
+        title: "CODE CLASH — Bid. Risk. Code. Win.",
+        desc: "A high-stakes team coding challenge where teams bid TechCoins for unseen problems and race to solve them within the time limit. Bid smart, code fast, manage the risk, and win."
+      },
+      {
+        round: "Round 2 · 08 September 2026 (Afternoon Session / Half-Day)",
+        title: "SIGNAL LOST",
+        desc: "A 3-member team challenge where communication, development, and testing determine how accurately the team can turn an incomplete understanding into the right solution."
+      }
+    ],
     image: "/code-forge.png",
     badgeColor: "bg-cyan-400/10 text-cyan-300 border-cyan-400/30",
     accentColor: "text-cyan-400"
@@ -118,7 +130,7 @@ export const eventShowcase = [
     tagline: "Innovation Pitching & Venture Communication",
     description: "Participants present innovative engineering concepts, startup blueprints, and practical solutions convincingly before an expert jury.",
     motif: "Lightbulb · Presentation screen · Startup pitch",
-    stage: "01 SEP · FULL DAY SPRINT",
+    stage: "02 SEP · FULL DAY SPRINT",
     image: "/pitchup.png",
     badgeColor: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
     accentColor: "text-emerald-400"
@@ -152,19 +164,27 @@ export const timelineData = [
   {
     date: "01 SEP 2026",
     day: "Tuesday",
-    badge: "FULL SPRINT",
-    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    badge: "HACKATHON R1",
+    badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
     events: [
-      { name: "IDEA PITCHING (PitchUp)", stage: "Full Day", desc: "Presentation of innovative project blueprints, startup concepts, and prototypes before jury." }
+      { 
+        name: "SOFTWARE HACKATHON: CODE CLASH (Round 1)", 
+        stage: "Round 1 · 01 SEP", 
+        desc: "A high-stakes team coding challenge where teams bid TechCoins for unseen problems and race to solve them within the time limit. Bid smart, code fast, manage the risk, and win." 
+      }
     ]
   },
   {
     date: "02 SEP 2026",
     day: "Wednesday",
-    badge: "HACKATHON R1",
-    badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
+    badge: "IDEA PITCHING",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
     events: [
-      { name: "SOFTWARE HACKATHON (Code Forge)", stage: "Round 1 · Half Day", desc: "Phase 1 software sprint, architecture modeling, and baseline prototype development." }
+      { 
+        name: "IDEA PITCHING (PitchUp)", 
+        stage: "Full Day · 02 SEP", 
+        desc: "Presentation of innovative project blueprints, startup concepts, and prototypes before jury." 
+      }
     ]
   },
   {
@@ -189,10 +209,14 @@ export const timelineData = [
   {
     date: "08 SEP 2026",
     day: "Tuesday",
-    badge: "HACKATHON FINALE",
+    badge: "HACKATHON FINALE (AFTERNOON)",
     badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
     events: [
-      { name: "SOFTWARE HACKATHON (Code Forge)", stage: "FINAL · Full Day", desc: "Final 24h sprint deployment, live application demo, and code quality audit." }
+      { 
+        name: "SOFTWARE HACKATHON: SIGNAL LOST (Round 2 Final)", 
+        stage: "FINAL · Afternoon Session / Half-Day", 
+        desc: "A 3-member team challenge where communication, development, and testing determine how accurately the team can turn an incomplete understanding into the right solution." 
+      }
     ]
   },
   {
