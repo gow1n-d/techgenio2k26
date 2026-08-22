@@ -73,22 +73,15 @@ export default function EventsSection() {
                   <span className="text-xs font-mono font-bold tracking-wider text-emerald-400 uppercase block mb-1">
                     {item.category}
                   </span>
-                  <h3 className="text-xl font-bold text-white mb-1">
+                  <h3 className="text-xl font-bold text-white mb-2">
                     {item.name}
                   </h3>
-                  <p className="text-sm font-medium text-neutral-500 mb-3">
-                    {item.tagline}
-                  </p>
-                  <p className="text-sm text-neutral-400 leading-relaxed mb-5">
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-4">
                     {item.description}
                   </p>
                 </div>
 
                 <div>
-                  <div className="p-3 bg-neutral-800/60 rounded-xl border border-neutral-700/50 mb-4 font-mono text-xs text-neutral-500">
-                    {item.motif}
-                  </div>
-
                   <div className="flex items-center justify-between pt-4 border-t border-neutral-700/50">
                     <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full border border-neutral-600 text-neutral-400 bg-neutral-800/50">
                       {item.stage}

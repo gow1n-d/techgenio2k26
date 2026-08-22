@@ -170,31 +170,25 @@ export default function ServicesSection() {
                     </div>
                   )}
 
-                  {/* Title & Tagline */}
-                  <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-1.5 group-hover:text-white transition-colors">
+                  {/* Title */}
+                  <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-2 group-hover:text-white transition-colors">
                     {item.name}
                   </h3>
-                  <p className="text-white/75 font-serif italic text-sm sm:text-base mb-3 line-clamp-1">
-                    "{item.tagline}"
-                  </p>
 
                   {/* Description */}
-                  <p className="text-white/60 text-xs sm:text-sm leading-relaxed mb-6">
+                  <p className="text-white/65 text-xs sm:text-sm leading-relaxed mb-4">
                     {item.description}
                   </p>
                 </div>
 
-                {/* Bottom Card Footer with Stage Badge & Motif */}
-                <div className="pt-4 border-t border-white/10 space-y-2.5">
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className={`text-[11px] font-mono px-2.5 py-1 rounded-full border ${style.badgeBg}`}>
-                      {item.stage}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-white/40 font-mono">
-                    <span className={`w-1.5 h-1.5 rounded-full ${style.dot}`} />
-                    <span className="truncate">{item.motif}</span>
-                  </div>
+                {/* Bottom Card Footer with Stage Badge */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className={`text-[11px] font-mono px-3 py-1 rounded-full border ${style.badgeBg}`}>
+                    {item.stage}
+                  </span>
+                  <span className="text-[11px] text-white/40 font-mono group-hover:text-white/70 transition-colors flex items-center gap-1">
+                    Details <ArrowUpRight className="w-3 h-3 inline" />
+                  </span>
                 </div>
               </motion.div>
             );
@@ -228,12 +222,12 @@ export default function ServicesSection() {
                 const Icon = arenaIcons[selectedArenaModal.id] || Cpu;
                 const style = arenaColorStyles[selectedArenaModal.id] || arenaColorStyles["techxpo"];
                 return (
-                  <div className="flex items-center gap-3 mb-5 pr-10">
+                  <div className="flex items-center gap-3.5 mb-5 pr-10">
                     <div className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center shrink-0`}>
                       <Icon className={`w-6 h-6 ${style.accent}`} />
                     </div>
                     <div>
-                      <span className={`text-xs font-mono uppercase tracking-widest font-semibold block ${style.accent}`}>
+                      <span className={`text-[11px] font-mono uppercase tracking-widest font-semibold block ${style.accent}`}>
                         {selectedArenaModal.category} · Arena #{selectedArenaModal.number}
                       </span>
                       <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
@@ -244,23 +238,23 @@ export default function ServicesSection() {
                 );
               })()}
 
-              <p className="text-white/70 font-serif italic text-base sm:text-lg mb-5 leading-snug">
+              <p className="text-white/75 font-serif italic text-sm sm:text-base mb-4 leading-relaxed">
                 "{selectedArenaModal.tagline}"
               </p>
 
               <div className="space-y-4 mb-6">
-                <p className="text-white/65 text-sm leading-relaxed">
+                <p className="text-white/70 text-sm leading-relaxed">
                   {selectedArenaModal.description}
                 </p>
 
                 {/* Structured Rounds breakdown (if available) */}
-                {selectedArenaModal.rounds && (
-                  <div className="space-y-3 pt-1">
-                    <div className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
-                      Round Structure &amp; Schedule
+                {selectedArenaModal.rounds ? (
+                  <div className="space-y-2.5 pt-2">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 font-bold mb-1">
+                      Event Schedule &amp; Round Breakdown
                     </div>
                     {selectedArenaModal.rounds.map((r, rIdx) => (
-                      <div key={rIdx} className="p-3.5 rounded-xl bg-cyan-950/20 border border-cyan-500/20 space-y-1">
+                      <div key={rIdx} className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 space-y-1 hover:border-white/20 transition-all">
                         <div className="flex items-center justify-between gap-2 flex-wrap">
                           <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">
                             {r.round}
@@ -275,18 +269,12 @@ export default function ServicesSection() {
                       </div>
                     ))}
                   </div>
-                )}
-
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-                  <div className="flex items-start gap-2.5 text-xs font-mono text-white/80">
-                    <Calendar className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                ) : (
+                  <div className="flex items-center gap-2.5 text-xs font-mono text-white/80 pt-2">
+                    <Calendar className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span><strong className="text-white/90">Stage:</strong> {selectedArenaModal.stage}</span>
                   </div>
-                  <div className="flex items-start gap-2.5 text-xs font-mono text-white/80">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong className="text-white/90">Motif:</strong> {selectedArenaModal.motif}</span>
-                  </div>
-                </div>
+                )}
               </div>
 
               <button
