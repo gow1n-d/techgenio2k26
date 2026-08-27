@@ -7,6 +7,7 @@
 import neuroPulseBrochure from '../assets/brochures/neuro-pulse-brochure.jpeg';
 import funEventsBrochure from '../assets/brochures/fun-events-brochure.jpeg';
 import pitchupBrochure from '../assets/brochures/pitchup-brochure.jpeg';
+import pitchupThemes from '../assets/brochures/pitchup-themes.jpeg';
 import bugVerseBrochure from '../assets/brochures/bug-verse-brochure.jpeg';
 import codeForgeBrochure from '../assets/brochures/code-forge-brochure.jpeg';
 import techxpoBrochure from '../assets/brochures/techxpo-brochure.jpeg';
@@ -172,6 +173,7 @@ export const eventShowcase = [
     motif: "Lightbulb · Presentation screen · Startup pitch",
     stage: "02 SEP · FULL DAY SPRINT",
     brochure: pitchupBrochure,
+    themesImage: pitchupThemes,
     image: "/pitchup.png",
     badgeColor: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
     accentColor: "text-emerald-400"
