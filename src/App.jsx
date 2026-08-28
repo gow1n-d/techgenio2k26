@@ -145,7 +145,7 @@ export default function App() {
               </a>
             </motion.div>
 
-            {/* Countdown Timer to 28th August 11:59 PM */}
+            {/* Countdown Timer (Frozen at 00:00:00:00) */}
             <CountdownTimer />
           </div>
         </section>
